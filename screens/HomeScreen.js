@@ -1,6 +1,9 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import CarouselCards from '../components/CarouselCards';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../components/CustomHeaderButton';
+
 
 const HomeScreen = () => {
   return (
@@ -10,6 +13,23 @@ const HomeScreen = () => {
       </SafeAreaView>
     </View> 
   );
+};
+
+HomeScreen.navigationOptions = navigationData => {
+  return {
+    headerTitle: 'kno-logic',
+    headerRight:
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Calendar"
+          iconName={"ios-calendar"}
+          size={27}
+          onPress={() => {
+            console.log("it works!");
+          }}
+        />
+      </HeaderButtons>
+  };
 };
 
 const styles = StyleSheet.create({
