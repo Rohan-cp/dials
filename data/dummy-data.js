@@ -11,13 +11,13 @@ export default data = [
     body: "By Daniel S. Silver",
     imgUrl: "https://imgur.com/QT4mi1c.png",
     category: "Math",
-    color: '#f2f3f4',
+    color: 'rgba(112,128,144,0.6)',
   },
   {
     title: "The Complex Geometry of Islamic Design",
     body: "By Eric Broug",
-    imgUrl: "https://imgur.com/Q4jUyT3.png",
+    imgUrl: "https://imgur.com/zBGXqV1.png",
     category: "Design",
-    color: '#ffc34d',
+    color: 'rgba(0,255,0, 0.5)',
   }
 ]
