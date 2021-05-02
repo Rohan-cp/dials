@@ -1,9 +1,9 @@
 # kno-logic
 <p align="center">
-  <img src="imgs/logo.png" width="180">
+  <img src="https://imgur.com/P2nDq7b.png" width="180">
 </p>
 
-Kno-logic is a mobile learning platform with short number of curated articles added daily for lifelong learners. This app was build with [React-Native](https://reactnative.dev/) and [expo](https://expo.io/).
+Kno-logic is a mobile learning platform with short number of curated articles added daily for lifelong learners. This app was build with [React-Native](https://reactnative.dev/) and [Expo](https://expo.io/).
 
 ## Screenshots
 
