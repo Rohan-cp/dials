@@ -1,11 +1,11 @@
-import React from 'react'
-import { SafeAreaView, StyleSheet, View } from 'react-native'
+import React from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import MainNavigator from './navigator/MainNavigator';
 import HomeScreen from './screens/HomeScreen';
-// import CarouselCards from './CarouselCards'
 
 export default function App() {
   return (
-    <HomeScreen/>
+    <MainNavigator/>
   );
 
   return (

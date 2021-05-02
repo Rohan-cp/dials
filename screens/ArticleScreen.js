@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const SavedScreen = () => {
-  return (
+const ArticleScreen = () => {
+  return(
     <View style={styles.screen}>
-      <Text>Saved Screen!</Text>
+      <Text>Article Screen!</Text>
     </View>
   );
 }
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SavedScreen;
+export default ArticleScreen;
