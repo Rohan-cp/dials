@@ -1,13 +1,8 @@
-import React from 'react'
-import { SafeAreaView, StyleSheet, View } from 'react-native'
-import HomeScreen from './screens/HomeScreen';
-// import CarouselCards from './CarouselCards'
+import React from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import CarouselCards from '../components/CarouselCards';
 
-export default function App() {
-  return (
-    <HomeScreen/>
-  );
-
+const HomeScreen = () => {
   return (
     <View style={{backgroundColor: '#E8EFF7'}}>
       <SafeAreaView style={styles.container}>
@@ -15,7 +10,7 @@ export default function App() {
       </SafeAreaView>
     </View> 
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -27,3 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default HomeScreen;
