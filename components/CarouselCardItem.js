@@ -64,18 +64,17 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   textContainter: {
-    marginTop: 10,
+    marginTop: 5,
   },
   category: {
     fontSize: 15,
-    borderWidth: 1,
-    borderRadius: 15,
-    padding: 5,
+    borderRadius: 19,
+    padding: 9,
     overflow: 'hidden',
   },
   pack: {
     marginLeft: 20,
-    marginTop: 20,
+    marginTop: 15,
     alignItems: 'flex-start',
   }
 })

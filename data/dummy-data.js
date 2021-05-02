@@ -4,7 +4,7 @@ export default data = [
     body: "By Natalise Wolchver",
     imgUrl: "https://imgur.com/Z1cPpmL.png",
     category: "Astrophysics",
-    color: '#acace6',
+    color: 'rgba(53, 67, 255, 0.7)',
   },
   {
     title: "What Does Randomness Look Like?",
