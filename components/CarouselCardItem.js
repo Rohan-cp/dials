@@ -14,9 +14,14 @@ const CarouselCardItem = ({ item, index }) => {
       />
       
       <TouchableHighlight underlayColor='white' onPress={() => {}}>
-        <View style={styles.textContainter}>
-          <Text style={styles.header}>{item.title}</Text>
-          <Text style={styles.body}>{item.body}</Text>
+        <View>
+          <View style={styles.pack}>
+              <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
+          </View>
+          <View style={styles.textContainter}>
+            <Text style={styles.header}>{item.title}</Text>
+            <Text style={styles.body}>{item.body}</Text>
+          </View>
         </View>
       </TouchableHighlight>
     </View>
@@ -41,25 +46,37 @@ const styles = StyleSheet.create({
   },
   image: {
     width: ITEM_WIDTH,
-    height: '63%',
+    height: '67%',
   },
   header: {
     color: "#222",
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: "bold",
     paddingLeft: 20,
-    paddingTop: 20,
+    paddingTop: 5,
   },
   body: {
     color: "#222",
-    fontSize: 18,
+    fontSize: 16,
     paddingLeft: 20,
-    paddingTop: 20,
+    paddingTop: 10,
     paddingRight: 20,
     textAlign: 'right',
   },
   textContainter: {
     marginTop: 10,
+  },
+  category: {
+    fontSize: 15,
+    borderWidth: 1,
+    borderRadius: 15,
+    padding: 5,
+    overflow: 'hidden',
+  },
+  pack: {
+    marginLeft: 20,
+    marginTop: 20,
+    alignItems: 'flex-start',
   }
 })
 

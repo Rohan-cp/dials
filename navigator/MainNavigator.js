@@ -42,7 +42,7 @@ const MainNavigator = createBottomTabNavigator({
     screen: SavedScreen,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
-        return <Ionicons name='ios-bookmark' size={25} color={'black'}/>;
+        return <Ionicons name='ios-bookmark-outline' size={25} color={'black'}/>;
       },
       tabBarColor: 'violet',
     }
@@ -51,9 +51,11 @@ const MainNavigator = createBottomTabNavigator({
     screen: ProfileScreen,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
-        return <Ionicons name='ios-person' size={25} color={'black'}/>;
+        return <Ionicons name='ios-person-outline' size={25} color={'black'}/>;
       },
-      tabBarColor: 'violet',
+      tabBarOptions: {
+        activeTintColor: 'red',
+      }
     }
   }
 });
