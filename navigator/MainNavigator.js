@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import ArticleScreen from '../screens/ArticleScreen';
 import SavedScreen from '../screens/SavedScreen';
@@ -29,11 +29,11 @@ const HomeNavigator = createStackNavigator({
 });
 
 const MainNavigator = createBottomTabNavigator({
-  Home: {
+  Daily: {
     screen: HomeNavigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
-        return <Ionicons name='ios-home' size={25} color={'black'}/>;
+        return <MaterialCommunityIcons name="newspaper-variant-outline" size={24} color="black" />;
       },
       tabBarColor: '#E8EFF7',
     },
