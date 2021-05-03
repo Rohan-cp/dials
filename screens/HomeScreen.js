@@ -5,11 +5,11 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/CustomHeaderButton';
 
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   return (
     <View style={{backgroundColor: '#E8EFF7'}}>
       <SafeAreaView style={styles.container}>
-        <CarouselCards />
+        <CarouselCards navigation={props.navigation}/>
       </SafeAreaView>
     </View> 
   );
