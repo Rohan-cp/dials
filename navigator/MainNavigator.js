@@ -33,7 +33,7 @@ const MainNavigator = createBottomTabNavigator({
     screen: HomeNavigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
-        return <MaterialCommunityIcons name="newspaper-variant-outline" size={24} color="black" />;
+        return <MaterialCommunityIcons name="newspaper-variant" size={24} color="black" />;
       },
       tabBarColor: '#E8EFF7',
     },
