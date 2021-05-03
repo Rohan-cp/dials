@@ -36,8 +36,7 @@ const MainNavigator = createBottomTabNavigator({
         return <Ionicons name='ios-home' size={25} color={'black'}/>;
       },
       tabBarColor: '#E8EFF7',
-    }
-    
+    },
   },
   Saved: {
     screen: SavedScreen,
@@ -46,7 +45,7 @@ const MainNavigator = createBottomTabNavigator({
         return <Ionicons name='ios-bookmark-outline' size={25} color={'black'}/>;
       },
       tabBarColor: '#E8EFF7',
-    }
+    },
   },
   Profile: {
     screen: ProfileScreen,
@@ -54,7 +53,11 @@ const MainNavigator = createBottomTabNavigator({
       tabBarIcon: (tabInfo) => {
         return <Ionicons name='ios-person-outline' size={25} color={'black'}/>;
       },
-    }
+    },
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: 'black',
   }
 });
 
