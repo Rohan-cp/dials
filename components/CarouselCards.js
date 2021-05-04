@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
+import { getDailyDigest } from '../store/actions/articles';
 export const SLIDER_WIDTH = Dimensions.get('window').width + 110
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
@@ -13,6 +14,16 @@ const CarouselCards = (props) => {
     return state.articles.articles;
   });
 
+  const dispatch = useDispatch();
+
+  const getArticles = useCallback(() => {
+    dispatch(getDailyDigest());
+  }, [dispatch]);
+
+  const navigateToArticle = () => {
+    return props.navigation.navigate({routeName: 'Article'});
+  };
+
   const CarouselCardItem = ({ item, index, }) => {
     return (
       <View style={styles.container} key={index}>
@@ -21,7 +32,8 @@ const CarouselCards = (props) => {
           style={styles.image}
         />
         <TouchableHighlight underlayColor='white' onPress={() => {
-          return props.navigation.navigate({routeName: 'Article'});
+          getArticles();
+          navigateToArticle();
         }}>
           <View>
             <View style={styles.pack}>
