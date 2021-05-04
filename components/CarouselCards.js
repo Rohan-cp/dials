@@ -1,13 +1,17 @@
-import React from 'react'
-import Carousel, { Pagination } from 'react-native-snap-carousel'
-import data from '../data/dummy-data';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native"
+import React from 'react';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { useSelector } from 'react-redux';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
 export const SLIDER_WIDTH = Dimensions.get('window').width + 110
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
 const CarouselCards = (props) => {
   const [index, setIndex] = React.useState(0);
   const isCarousel = React.useRef(null);
+
+  const data = useSelector(state => {
+    return state.articles.articles;
+  });
 
   const CarouselCardItem = ({ item, index, }) => {
     return (
