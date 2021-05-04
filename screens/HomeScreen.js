@@ -22,7 +22,7 @@ HomeScreen.navigationOptions = navigationData => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Calendar"
-          iconName={"ios-calendar"}
+          iconName={"ios-calendar-outline"}
           size={27}
           onPress={() => {
             console.log("it works!");
