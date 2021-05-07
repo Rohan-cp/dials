@@ -3,7 +3,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
 import { getDailyDigest } from '../store/actions/articles';
-export const SLIDER_WIDTH = Dimensions.get('window').width + 110
+export const SLIDER_WIDTH = Dimensions.get('window').width + 90
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
 const CarouselCards = (props) => {
@@ -36,12 +36,12 @@ const CarouselCards = (props) => {
           navigateToArticle();
         }}>
           <View>
-            <View style={styles.pack}>
-                <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
-            </View>
             <View style={styles.textContainter}>
               <Text style={styles.header}>{item.title}</Text>
-              <Text style={styles.body}>{item.body}</Text>
+              <View style={styles.pack}>
+                <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
+                <Text style={styles.body}>{item.body}</Text>
+              </View>
             </View>
           </View>
         </TouchableHighlight>
@@ -90,16 +90,16 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 1,
     },
-    shadowOpacity: 0.29,
+    shadowOpacity: 0.21,
     shadowRadius: 4.65,
 
     elevation: 7,
   },
   image: {
     width: ITEM_WIDTH,
-    height: '67%',
+    height: '72%',
   },
   header: {
     color: "#222",
@@ -111,9 +111,7 @@ const styles = StyleSheet.create({
   body: {
     color: "#222",
     fontSize: 16,
-    paddingLeft: 20,
-    paddingTop: 10,
-    paddingRight: 20,
+    padding: 9,
     textAlign: 'right',
   },
   textContainter: {
@@ -126,9 +124,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   pack: {
-    marginLeft: 20,
-    marginTop: 15,
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    marginVertical: 9,
+    justifyContent: 'space-between'
   }
 })
 

@@ -4,7 +4,6 @@ import CarouselCards from '../components/CarouselCards';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/CustomHeaderButton';
 
-
 const HomeScreen = props => {
   return (
     <View style={{backgroundColor: '#E8EFF7'}}>

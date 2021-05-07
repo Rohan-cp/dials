@@ -1,6 +1,6 @@
 export default data = [
   {
-    title: "Cosmic Map of Ultrahigh-Energy Particles Points to Lon-Hidden Treasures",
+    title: "Cosmic Map of Ultrahigh-Energy Particles Points to Long-Hidden Treasures",
     body: "By Natalise Wolchver",
     imgUrl: "https://imgur.com/Z1cPpmL.png",
     category: "Astrophysics",
