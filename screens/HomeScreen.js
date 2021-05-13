@@ -9,17 +9,20 @@ const HomeScreen = props => {
       <SafeAreaView style={styles.container}>
         <CarouselCards navigation={props.navigation}/>
       </SafeAreaView>
-    </View> 
+    </View>
   );
 };
 
 HomeScreen.navigationOptions = navigationData => {
   return {
     headerTitle: () => {
-      return <Image source={{uri: '../assets/icon.png'}} />
+      <View>
+        <Image source={{uri: 'https://imgur.com/P2nDq7b.png'}} />
+      </View>
     },
     headerRight: () => {
-      return (<View style={styles.iconContainer} >
+      return (
+      <View style={styles.iconContainer} >
         <AntDesign name="calendar" size={25} color="black" />
       </View>
       );
