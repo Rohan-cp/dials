@@ -29,20 +29,20 @@ const HomeNavigator = createStackNavigator({
 });
 
 const MainNavigator = createBottomTabNavigator({
-  Daily: {
-    screen: HomeNavigator,
-    navigationOptions: {
-      tabBarIcon: (tabInfo) => {
-        return <MaterialCommunityIcons name="newspaper-variant" size={24} color="black" />;
-      },
-      tabBarColor: '#E8EFF7',
-    },
-  },
   Saved: {
     screen: SavedScreen,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
         return <Ionicons name='ios-bookmark-outline' size={25} color={'black'}/>;
+      },
+      tabBarColor: '#E8EFF7',
+    },
+  },
+  Daily: {
+    screen: HomeNavigator,
+    navigationOptions: {
+      tabBarIcon: (tabInfo) => {
+        return <MaterialCommunityIcons name="newspaper-variant" size={24} color="black" />;
       },
       tabBarColor: '#E8EFF7',
     },
@@ -58,7 +58,8 @@ const MainNavigator = createBottomTabNavigator({
 }, {
   tabBarOptions: {
     activeTintColor: 'black',
-  }
+  },
+  initialRouteName: 'Daily',
 });
 
 export default createAppContainer(MainNavigator);

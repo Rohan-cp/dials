@@ -15,11 +15,7 @@ const HomeScreen = props => {
 
 HomeScreen.navigationOptions = navigationData => {
   return {
-    headerTitle: () => {
-      <View>
-        <Image source={{uri: 'https://imgur.com/P2nDq7b.png'}} />
-      </View>
-    },
+    headerTitle: 'kno-logic',
     headerRight: () => {
       return (
       <View style={styles.iconContainer} >
