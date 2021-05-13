@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const SavedScreen = () => {
   return (
     <View style={styles.screen}>
-      <Text>Saved Screen!</Text>
+      <Text>Sign in to get started!</Text>
     </View>
   );
 }

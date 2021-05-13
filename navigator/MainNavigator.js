@@ -28,12 +28,32 @@ const HomeNavigator = createStackNavigator({
   }
 });
 
-const MainNavigator = createBottomTabNavigator({
+const SavedNavigator = createStackNavigator({
   Saved: {
     screen: SavedScreen,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => {
-        return <Ionicons name='ios-bookmark-outline' size={25} color={'black'}/>;
+      headerTitle: 'Saved Articles',
+    }
+  }
+});
+
+const ProfileNavigator = createStackNavigator({
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      headerTitle: 'Your Profile',
+    }
+  }
+});
+
+const MainNavigator = createBottomTabNavigator({
+  Saved: {
+    screen: SavedNavigator,
+    navigationOptions: {
+      tabBarIcon: ({ focused }) => {
+        let iconName;
+        focused ? iconName = "ios-bookmark" : iconName = "ios-bookmark-outline"
+        return <Ionicons name={iconName} size={25} color={'black'}/>;
       },
       tabBarColor: '#E8EFF7',
     },
@@ -41,17 +61,21 @@ const MainNavigator = createBottomTabNavigator({
   Daily: {
     screen: HomeNavigator,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => {
-        return <MaterialCommunityIcons name="newspaper-variant" size={24} color="black" />;
+      tabBarIcon: ({ focused }) => {
+        let iconName;
+        focused ? iconName = "newspaper-variant" : iconName = "newspaper-variant-outline"
+        return <MaterialCommunityIcons name={iconName} size={24} color="black" />;
       },
       tabBarColor: '#E8EFF7',
     },
   },
   Profile: {
-    screen: ProfileScreen,
+    screen: ProfileNavigator,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => {
-        return <Ionicons name='ios-person-outline' size={25} color={'black'}/>;
+      tabBarIcon: ({ focused }) => {
+        let iconName;
+        focused ? iconName = "ios-person" : iconName = 'ios-person-outline'
+        return <Ionicons name={iconName} size={25} color={'black'}/>;
       },
     },
   }

@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const ProfileScreen = () => {
   return (
     <View style={styles.screen}>
-      <Text>Profile Screen!</Text>
+      <Text>You need to sign in to setup your profile!</Text>
     </View>
   );
 }

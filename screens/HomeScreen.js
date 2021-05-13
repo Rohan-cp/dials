@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import CarouselCards from '../components/CarouselCards';
 import { AntDesign } from '@expo/vector-icons'; 
 
@@ -18,11 +18,17 @@ HomeScreen.navigationOptions = navigationData => {
     headerTitle: 'kno-logic',
     headerRight: () => {
       return (
-      <View style={styles.iconContainer} >
-        <AntDesign name="calendar" size={25} color="black" />
-      </View>
+        <TouchableOpacity onPress={() => {
+          console.log("it works!");
+        }} >
+          <View style={styles.iconContainer} >
+            <AntDesign name="calendar" size={25} color="black" />
+            <Text style={{fontSize: 8, textAlign: 'center'}} >Today</Text>
+          </View>
+        </TouchableOpacity>
       );
-    }
+    },
+    headerBackImage: () => <Image source={{uri: 'https://imgur.com/P2nDq7b'}} />
   };
 };
 
