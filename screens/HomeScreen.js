@@ -1,8 +1,7 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
 import CarouselCards from '../components/CarouselCards';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../components/CustomHeaderButton';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const HomeScreen = props => {
   return (
@@ -16,18 +15,15 @@ const HomeScreen = props => {
 
 HomeScreen.navigationOptions = navigationData => {
   return {
-    headerTitle: 'kno-logic',
-    headerRight:
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          title="Calendar"
-          iconName={"ios-calendar-outline"}
-          size={27}
-          onPress={() => {
-            console.log("it works!");
-          }}
-        />
-      </HeaderButtons>
+    headerTitle: () => {
+      return <Image source={{uri: '../assets/icon.png'}} />
+    },
+    headerRight: () => {
+      return (<View style={styles.iconContainer} >
+        <AntDesign name="calendar" size={25} color="black" />
+      </View>
+      );
+    }
   };
 };
 
@@ -39,6 +35,9 @@ const styles = StyleSheet.create({
     padding: 50,
     marginTop: 20,
   },
+  iconContainer: {
+    paddingRight: 15
+  }
 });
 
 export default HomeScreen;

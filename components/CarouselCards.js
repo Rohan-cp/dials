@@ -67,9 +67,9 @@ const CarouselCards = (props) => {
         activeDotIndex={index}
         carouselRef={isCarousel}
         dotStyle={{
-          width: 10,
-          height: 10,
-          borderRadius: 5,
+          width: 7,
+          height: 7,
+          borderRadius: 3.5,
           marginHorizontal: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.92)'
         }}
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.21,
-    shadowRadius: 4.65,
+    shadowRadius: 2.2,
 
     elevation: 7,
   },
@@ -120,13 +120,14 @@ const styles = StyleSheet.create({
   category: {
     fontSize: 15,
     borderRadius: 19,
-    padding: 9,
+    paddingHorizontal: 9,
+    paddingVertical: 9,
     overflow: 'hidden',
   },
   pack: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    marginVertical: 9,
+    marginVertical: 10,
     justifyContent: 'space-between'
   }
 })
