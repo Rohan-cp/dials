@@ -1138,6 +1138,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/lato@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/lato/-/lato-0.1.0.tgz#c0b62ebb883adf41f3e02bd76959914afc7d5d87"
+  integrity sha512-+ooOTs9CPnAHvwe0HjtEHnBZ2MrxzBLqBuXsBIhne20BOuq251MRYzc+2R1cWi/mxyjX+S/buXAES8UvAoTGhw==
+
 "@expo/config-plugins@1.0.28", "@expo/config-plugins@^1.0.18":
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.28.tgz#6c3911d493bc329bf9ef5c99585564539b1a57e1"

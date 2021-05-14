@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
   header: {
     color: "#222",
     fontSize: 24,
-    fontWeight: "bold",
-    paddingLeft: 20,
+    fontFamily: 'Lato_400Regular',
+    paddingHorizontal: '7%',
     paddingTop: 5,
   },
   body: {
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 9,
     textAlign: 'right',
+    fontFamily: 'Lato_400Regular'
   },
   textContainter: {
     marginTop: 5,
@@ -123,6 +124,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 9,
     overflow: 'hidden',
+    fontFamily: 'Lato_400Regular'
   },
   pack: {
     flexDirection: 'row',
