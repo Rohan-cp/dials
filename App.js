@@ -4,6 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { enableScreens } from 'react-native-screens';
 import ReduxThunk from 'redux-thunk';
+import { StatusBar } from 'expo-status-bar';
 
 import articlesReducer from './store/reducers/articles';
 
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <MainNavigator/>
+      <StatusBar style="dark" />
     </Provider>
   );
 }
