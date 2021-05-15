@@ -27,14 +27,16 @@ const CarouselCards = (props) => {
   const CarouselCardItem = ({ item, index, }) => {
     return (
       <View style={styles.container} key={index}>
+        <TouchableHighlight activeOpacity={1} underlayColor='white' onPress={() => {
+        getArticles();
+        navigateToArticle();
+      }}>
+        <View>
         <Image
           source={{ uri: item.imgUrl }}
           style={styles.image}
         />
-        <TouchableHighlight underlayColor='white' onPress={() => {
-          getArticles();
-          navigateToArticle();
-        }}>
+        
           <View>
             <View style={styles.textContainter}>
               <Text style={styles.header}>{item.title}</Text>
@@ -44,6 +46,8 @@ const CarouselCards = (props) => {
               </View>
             </View>
           </View>
+        
+        </View>
         </TouchableHighlight>
       </View>
     )
