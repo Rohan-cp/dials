@@ -23,7 +23,7 @@ HomeScreen.navigationOptions = navigationData => {
         }} >
           <View style={styles.iconContainer} >
             <AntDesign name="calendar" size={25} color="black" />
-            <Text style={{fontSize: 8, textAlign: 'center'}} >Today</Text>
+            <Text style={{fontSize: 8, textAlign: 'center', fontFamily: 'Lato_700Bold'}} >Today</Text>
           </View>
         </TouchableOpacity>
       );

@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   header: {
     color: "#222",
     fontSize: 24,
-    fontFamily: 'Lato_400Regular',
+    fontFamily: 'Lato_700Bold',
     paddingHorizontal: '7%',
     paddingTop: 5,
   },
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 9,
     overflow: 'hidden',
-    fontFamily: 'Lato_400Regular'
+    fontFamily: 'Lato_700Bold'
   },
   pack: {
     flexDirection: 'row',

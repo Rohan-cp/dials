@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "kno-logic",
+    "name": "Kno Logic",
     "slug": "kno-logic",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    },
+    }, 
     "updates": {
       "fallbackToCacheTimeout": 0
     },
