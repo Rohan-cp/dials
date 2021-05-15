@@ -19,7 +19,7 @@ HomeScreen.navigationOptions = navigationData => {
     headerRight: () => {
       return (
         <TouchableOpacity onPress={() => {
-          console.log("it works!");
+          navigationData.navigation.navigate({routeName: 'Calendar'});
         }} >
           <View style={styles.iconContainer} >
             <AntDesign name="calendar" size={25} color="black" />

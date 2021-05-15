@@ -5,6 +5,7 @@ import { createAppContainer } from 'react-navigation';
 
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
+import CalendarScreen from '../screens/CalendarScreen';
 import ArticleScreen from '../screens/ArticleScreen';
 import SavedScreen from '../screens/SavedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -20,6 +21,12 @@ const HomeNavigator = createStackNavigator({
     screen: ArticleScreen,
     navigationOptions: {
       headerTitle: 'Article',
+    }
+  },
+  Calendar: {
+    screen: CalendarScreen,
+    navigationOptions: {
+      headerTitle: 'Calendar',
     }
   }
 }, {

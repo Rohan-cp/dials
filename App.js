@@ -7,6 +7,7 @@ import { enableScreens } from 'react-native-screens';
 import ReduxThunk from 'redux-thunk';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+
 import { 
   Lato_100Thin,
   Lato_100Thin_Italic,
@@ -21,6 +22,7 @@ import {
 } from '@expo-google-fonts/lato'
 
 import articlesReducer from './store/reducers/articles';
+import { SafeAreaView } from 'react-native';
 
 enableScreens();
 
@@ -47,6 +49,13 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+  /*
+  return(
+    <SafeAreaView>
+      <Calendar />
+    </SafeAreaView>
+  );
+  */
   return (
     <Provider store={store}>
       <MainNavigator/>
