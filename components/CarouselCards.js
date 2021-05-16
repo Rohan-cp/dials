@@ -3,7 +3,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
 import { getDailyDigest } from '../store/actions/articles';
-export const SLIDER_WIDTH = Dimensions.get('window').width + 90
+export const SLIDER_WIDTH = Dimensions.get('window').width + (0.22 * Dimensions.get('window').width)
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
 const CarouselCards = (props) => {
@@ -20,33 +20,34 @@ const CarouselCards = (props) => {
     dispatch(getDailyDigest());
   }, [dispatch]);
 
-  const navigateToArticle = () => {
-    return props.navigation.navigate({routeName: 'Article'});
+  const navigateToArticle = (itemId) => {
+    return props.navigation.navigate('Article', {
+      id: itemId
+    });
   };
 
   const CarouselCardItem = ({ item, index, }) => {
     return (
       <View style={styles.container} key={index}>
         <TouchableHighlight activeOpacity={1} underlayColor='white' onPress={() => {
-        getArticles();
-        navigateToArticle();
-      }}>
-        <View>
-        <Image
-          source={{ uri: item.imgUrl }}
-          style={styles.image}
-        />
+          getArticles();
+          navigateToArticle(item.id);
+        }}>
           <View>
-            <View style={styles.textContainter}>
-              <Text style={styles.header} numberOfLines={3} >{item.title}</Text>
+            <Image
+              source={{ uri: item.imgUrl }}
+              style={styles.image}
+            />
+            <View style={styles.textContainer}>
+              <View>
+              <Text style={styles.header} numberOfLines={3}>{item.title}</Text>
+              </View>
               <View style={styles.pack}>
                 <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
-                <Text style={styles.body}>{item.body}</Text>
+                <Text style={styles.body}>{item.byLine}</Text>
               </View>
             </View>
           </View>
-        
-        </View>
         </TouchableHighlight>
       </View>
     )
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     elevation: 7,
   },
   image: {
-    width: ITEM_WIDTH,
+    width: '100%',
     height: '72%',
   },
   header: {
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Lato_700Bold',
     paddingHorizontal: '7%',
-    paddingTop: 5,
+    paddingTop: '1.5%',
   },
   body: {
     color: "#222",
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontFamily: 'Lato_400Regular'
   },
-  textContainter: {
+  textContainer: {
     marginTop: 5,
   },
   category: {
@@ -134,6 +135,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     justifyContent: 'space-between'
+  },
+  imageContainer: {
+    backgroundColor: 'black'
   }
 })
 
