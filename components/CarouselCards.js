@@ -124,10 +124,12 @@ const styles = StyleSheet.create({
   },
   category: {
     fontSize: 15,
-    borderRadius: 19,
+    borderRadius: 20,
     paddingHorizontal: 9,
     paddingVertical: 9,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'black',
     fontFamily: 'Lato_700Bold'
   },
   pack: {

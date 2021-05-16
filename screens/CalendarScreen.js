@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import {Calendar} from 'react-native-calendars';
 
 const CalendarScreen = props => {
@@ -42,9 +42,9 @@ const CalendarScreen = props => {
         }
       }}
     />
-    <View style={styles.buttonContainer} >
-      <Button onPress={onSaveHandler} title="Save" color='white' />
-    </View>
+      <View style={styles.buttonContainer} >
+        <Button onPress={onSaveHandler} title="Save" color='white' />
+      </View>
     </SafeAreaView>
   );
 }

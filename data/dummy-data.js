@@ -17,7 +17,9 @@ export default data = [
   },
   {
     id: "a2",
-    title: "What Does Randomness Look Like?",
+    title: `What Does Randomness Look Like?
+    
+    `,
     byLine: "By Aatish Bhatia",
     body: `On 13 June 1944, a week after the allied invasion of Normandy, a loud buzzing sound rattled through the skies of battle-worn London. The source of the sound was a newly developed German instrument of war, the V-1 flying bomb. A precursor to the cruise missile, the V-1 was a self-propelled flying bomb, guided using gyroscopes, and powered by a simple pulse jet engine that gulped air and ignited fuel 50 times a second. This high frequency pulsing gave the bomb its characteristic sound, earning them the nickname buzzbombs.
 
@@ -35,7 +37,9 @@ export default data = [
   },
   {
     id: "a3",
-    title: "The Complex Geometry of Islamic Design",
+    title: `The Complex Geometry of Islamic Design
+
+    `,
     byLine: "By Eric Broug",
     body: `In Islamic culture, geometry is everywhere. You can find it in mosques, madrasas, palaces and private homes. This tradition began in the 8th century CE during the early history of Islam, when craftsmen took preexisting motifs from Roman and Persian cultures and developed them into new forms of visual expression. 
 

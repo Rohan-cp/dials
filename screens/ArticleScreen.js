@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   body: {
     paddingHorizontal: '5%',
     paddingTop: 10,
-    fontSize: 15
+    fontSize: 16,
+    fontFamily: 'Lato_400Regular'
   },
   titleContainer: {
     margin: '3%',
