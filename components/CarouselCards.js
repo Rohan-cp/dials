@@ -36,10 +36,9 @@ const CarouselCards = (props) => {
           source={{ uri: item.imgUrl }}
           style={styles.image}
         />
-        
           <View>
             <View style={styles.textContainter}>
-              <Text style={styles.header}>{item.title}</Text>
+              <Text style={styles.header} numberOfLines={3} >{item.title}</Text>
               <View style={styles.pack}>
                 <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
                 <Text style={styles.body}>{item.body}</Text>
