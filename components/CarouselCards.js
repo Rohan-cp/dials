@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
@@ -9,16 +9,19 @@ export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 const CarouselCards = (props) => {
   const [index, setIndex] = React.useState(0);
   const isCarousel = React.useRef(null);
-
-  const data = useSelector(state => {
-    return state.articles.articles;
-  });
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDailyDigest())
+  }, [dispatch]);
 
   const getArticles = useCallback(() => {
     dispatch(getDailyDigest());
   }, [dispatch]);
+
+  const data = useSelector(state => {
+    return state.articles.articles;
+  });
 
   const navigateToArticle = (itemId) => {
     return props.navigation.navigate('Article', {
@@ -35,16 +38,20 @@ const CarouselCards = (props) => {
         }}>
           <View>
             <Image
-              source={{ uri: item.imgUrl }}
+              source={{ uri: item.photo }}
               style={styles.image}
             />
             <View style={styles.textContainer}>
               <View>
-              <Text style={styles.header} numberOfLines={3}>{item.title}</Text>
+              <Text style={styles.header} numberOfLines={3}>{
+                `${item.title}
+              
+                `}
+              </Text>
               </View>
               <View style={styles.pack}>
-                <Text style={{...styles.category, backgroundColor: item.color}}>{item.category}</Text>
-                <Text style={styles.body}>{item.byLine}</Text>
+                <Text style={{...styles.category, backgroundColor: item.category[0].color}}>{item.category[0].name}</Text>
+                <Text style={styles.body}>{"By " + item.author}</Text>
               </View>
             </View>
           </View>
@@ -67,7 +74,7 @@ const CarouselCards = (props) => {
         useScrollView={true}
       />
       <Pagination
-        dotsLength={data.length}
+        dotsLength={3}
         activeDotIndex={index}
         carouselRef={isCarousel}
         dotStyle={{
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
     paddingTop: '1.5%',
   },
   body: {
-    color: "#222",
+    color: "black",
     fontSize: 16,
     padding: 9,
     textAlign: 'right',
@@ -123,7 +130,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   category: {
-    fontSize: 15,
+    fontSize: 16,
     borderRadius: 20,
     paddingHorizontal: 9,
     paddingVertical: 9,

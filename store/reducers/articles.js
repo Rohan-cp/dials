@@ -2,13 +2,16 @@ import data from '../../data/dummy-data';
 import { GET_DAILY_DIGEST } from '../actions/articles';
 
 const initialState = {
-  articles: data,
+  articles: [],
 }
 
 const mealsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DAILY_DIGEST:
-      return state;
+      // console.log(action.articles)
+      return {
+        articles: action.articles
+      };
     default:
       return state;
   }

@@ -25,7 +25,6 @@ const ArticleScreen = props => {
   const article = useSelector(state => {
     return state.articles.articles.find(article => article.id == articleId)
   });
-  console.log(article.imgUrl);
   return(
     <ScrollView>
       <View style={styles.screen}>
@@ -33,8 +32,8 @@ const ArticleScreen = props => {
           <Text style={styles.title} >{article.title}</Text>
         </View>
         <Image source={{uri: article.imgUrl}} />
-        <Text style={styles.body}>{article.body}</Text>
-        <Button title='Visit source to read more!' onPress={() => Linking.openURL(article.articleUrl)} />
+        <Text style={styles.body}>{article.description}</Text>
+        <Button title='Visit source to read more!' onPress={() => Linking.openURL(article.link)} />
       </View>
     </ScrollView>
   );
