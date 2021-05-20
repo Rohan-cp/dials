@@ -10,13 +10,9 @@ const CarouselCards = (props) => {
   const [index, setIndex] = React.useState(0);
   const isCarousel = React.useRef(null);
   const dispatch = useDispatch();
-
+  console.log("1");
   useEffect(() => {
     dispatch(getDailyDigest())
-  }, [dispatch]);
-
-  const getArticles = useCallback(() => {
-    dispatch(getDailyDigest());
   }, [dispatch]);
 
   const data = useSelector(state => {
@@ -33,7 +29,6 @@ const CarouselCards = (props) => {
     return (
       <View style={styles.container} key={index}>
         <TouchableHighlight activeOpacity={1} underlayColor='white' onPress={() => {
-          getArticles();
           navigateToArticle(item.id);
         }}>
           <View>
@@ -74,7 +69,7 @@ const CarouselCards = (props) => {
         useScrollView={true}
       />
       <Pagination
-        dotsLength={3}
+        dotsLength={data.length}
         activeDotIndex={index}
         carouselRef={isCarousel}
         dotStyle={{

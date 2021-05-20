@@ -21,21 +21,22 @@ const ArticleScreen = props => {
       isArticleSelected: isSelected,
     });
   }, [isSelected]);
+
   const articleId = props.navigation.getParam('id');
   const article = useSelector(state => {
     return state.articles.articles.find(article => article.id == articleId)
   });
+
   return(
-    <ScrollView>
+    <ScrollView >
       <View style={styles.screen}>
         <View style={styles.titleContainer}>
           <Text style={styles.title} >{article.title}</Text>
         </View>
-        <Image source={{uri: article.imgUrl}} />
         <Text style={styles.body}>{article.description}</Text>
         <Button title='Visit source to read more!' onPress={() => Linking.openURL(article.link)} />
       </View>
-    </ScrollView>
+    </ScrollView> 
   );
 }
 
@@ -59,18 +60,19 @@ ArticleScreen.navigationOptions = navigationData => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
     backgroundColor: 'white'
   },
   title: {
+    paddingHorizontal: '2%',
     fontSize: 24,
-    fontFamily: 'Lato_700Bold',
-    textAlign: 'center',
+    fontWeight: '600',
+    textAlign: 'left',
   },
   body: {
     paddingHorizontal: '5%',
     paddingTop: 10,
-    fontSize: 16,
+    fontWeight: '400',
+    fontSize: 17,
   },
   titleContainer: {
     margin: '3%',
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: '50%',
   },
 });
 
