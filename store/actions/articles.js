@@ -1,5 +1,3 @@
-import Test from "../../models/Test";
-
 export const GET_DAILY_DIGEST = 'GET_DAILY_DIGEST';
 
 export const getDailyDigest = () => {
