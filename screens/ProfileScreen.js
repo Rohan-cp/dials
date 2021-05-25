@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-const ProfileScreen = () => {
+const ProfileScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>You need to sign in to setup your profile!</Text>
+      <Button title='Signup Page' onPress={() => props.navigation.navigate('Auth') } />
     </View>
   );
 }

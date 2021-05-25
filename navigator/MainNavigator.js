@@ -9,6 +9,7 @@ import CalendarScreen from '../screens/CalendarScreen';
 import ArticleScreen from '../screens/ArticleScreen';
 import SavedScreen from '../screens/SavedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import AuthScreen from '../screens/AuthScreen';
 
 const HomeNavigator = createStackNavigator({
   Home: {
@@ -49,6 +50,12 @@ const ProfileNavigator = createStackNavigator({
     screen: ProfileScreen,
     navigationOptions: {
       headerTitle: 'Your Profile',
+    }
+  },
+  Auth: {
+    screen: AuthScreen,
+    navigationOptions: {
+      headerTitle: 'Join Us',
     }
   }
 });
