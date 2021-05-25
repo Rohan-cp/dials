@@ -10,7 +10,6 @@ const CarouselCards = (props) => {
   const [index, setIndex] = React.useState(0);
   const isCarousel = React.useRef(null);
   const dispatch = useDispatch();
-  console.log("1");
   useEffect(() => {
     dispatch(getDailyDigest())
   }, [dispatch]);

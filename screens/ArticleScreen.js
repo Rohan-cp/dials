@@ -7,7 +7,7 @@ const ArticleScreen = props => {
   const [ isSelected, setIsSelected ] = useState(false);
 
   const onSaveHandler = () => {
-    setIsSelected(!isSelected);
+    setIsSelected(prevState => !prevState);
   }
 
   useEffect(() => {
