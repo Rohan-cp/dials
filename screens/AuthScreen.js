@@ -1,5 +1,15 @@
 import React, { useState, useReducer, useCallback, useEffect } from 'react';
-import { View, StyleSheet, Button, ScrollView, KeyboardAvoidingView, ActivityIndicator, Alert } from 'react-native';
+import { 
+  View, 
+  StyleSheet, 
+  Button, 
+  ScrollView, 
+  KeyboardAvoidingView, 
+  ActivityIndicator, 
+  Alert,
+  ImageBackground,
+  Image
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import Card from '../components/Card';
@@ -97,6 +107,7 @@ const AuthScreen = props => {
       keyboardVerticalOffset={50}
       style={styles.screen}
     >
+      <Image source={require('../assets/logo.png')} style={styles.image} />
       <Card style={styles.authContainer} >
         <ScrollView>
           <Input 
@@ -138,6 +149,7 @@ const AuthScreen = props => {
             onPress={() => setIsSignup(prevState => !prevState)} />
         </ScrollView>
       </Card>
+      
     </KeyboardAvoidingView>
   );
 };
@@ -146,7 +158,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: Colors.primaryColor,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   authContainer: {
@@ -157,6 +168,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 10
+  },
+  image: {
+    width: 150,
+    height: 40,
+    marginBottom: '10%',
+    marginTop: '25%'
   }
 })
 
