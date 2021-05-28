@@ -1,28 +1,27 @@
+import axios from 'axios';
+
+const a = axios.create({
+  baseURL: 'https://knologic.chickenkiller.com/',
+  timeout: 10000,
+});
+
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
 
 export const signup = (email, password) => {
-  console.log(email);
-  console.log(password);
   return async dispatch => {
     const response = await fetch(
-      'https://knologic.chickenkiller.com:4000/user/create'
+      'https://rn-test-d3ab9-default-rtdb.firebaseio.com/test.json'
     , {
       method: 'POST',
       headers: {
-        'Content-type' : 'applications/json',
+        'Content-type' : 'applications/json'
       },
       body: JSON.stringify({
-        email: "test@hey.com",
-        name: "example",
-        password: "plswork",
+        email: email,
+        password: password
       }),
     });
-    
-    if (!response.ok) {
-      const errorResData = await response.json();
-      console.log(errorResData);
-    }
 
     const resData = await response.json();
     console.log(resData);
@@ -32,27 +31,13 @@ export const signup = (email, password) => {
 
 export const login = (email, password) => {
   return async dispatch => {
-    const response = await fetch(
-      'https://knologic.chickenkiller.com:4000/user/login'
-    ,
-    {
-      method: 'POST',
-      headers: {
-        'Content-type' : 'applications/json',
-      },
-      body: JSON.stringify({
-        email: "jo",
-        password: "jo",
-      })
-    });
-
-    if (!response.ok) {
-      const errorResData = await response.json();
-      console.log(errorResData);
-    }
-
-    const resData = await response.json();
-    console.log(resData);
+    const response = a.post('https://knologic.chickenkiller.com:4000/user/login', 
+  {email: 'jo', password: 'jo'})
+  .then(response => {
+    console.log(JSON.stringify(response));
+  }).catch(err => {
+    console.log(JSON.stringify(err));
+  })
     dispatch({ type: LOGIN })
   };
 };

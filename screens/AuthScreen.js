@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView, 
   ActivityIndicator, 
   Alert,
-  ImageBackground,
   Image
 } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -21,6 +20,7 @@ const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
 const formReducer = (state, action) => {
   if (action.type === FORM_INPUT_UPDATE) {
+    console.log(action.input);
     const updatedValues = {
       ...state.inputValues,
       [action.input]: action.value
@@ -43,10 +43,11 @@ const formReducer = (state, action) => {
 };
 
 const AuthScreen = props => {
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
-  const [ error, setError ] = useState();
-  const [ isSignup, setIsSignup ] = useState(true); 
+
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
       email: '',
@@ -61,21 +62,9 @@ const AuthScreen = props => {
 
   useEffect(() => {
     if (error) {
-      Alert.alert('An Error Occured!', error, [{text: 'Okay'}]);
+      Alert.alert('An Error Occurred!', error, [{ text: 'Okay' }]);
     }
   }, [error]);
-
-  const inputChangeHandler = useCallback(
-    (inputIdentifier, inputValue, inputValidity) => {
-      dispatchFormState({
-        type: FORM_INPUT_UPDATE,
-        value: inputValue,
-        isValid: inputValidity,
-        input: inputIdentifier
-      });
-    }, 
-    [dispatchFormState]
-  );
 
   const authHandler = async () => {
     let action;
@@ -94,17 +83,26 @@ const AuthScreen = props => {
     setIsLoading(true);
     try {
       await dispatch(action);
-    } catch (error) {
-      setError(error.message);
+    } catch (err) {
+      setError(err.message);
     }
-    
     setIsLoading(false);
-  }
+  };
+
+  const inputChangeHandler = useCallback(
+    (inputIdentifier, inputValue, inputValidity) => {
+      dispatchFormState({
+        type: FORM_INPUT_UPDATE,
+        value: inputValue,
+        isValid: inputValidity,
+        input: inputIdentifier
+      });
+    },
+    [dispatchFormState]
+  );
 
   return (
-    <KeyboardAvoidingView 
-      behavior='padding'
-      keyboardVerticalOffset={50}
+    <View
       style={styles.screen}
     >
       <Image source={require('../assets/logo.png')} style={styles.image} />
@@ -113,7 +111,7 @@ const AuthScreen = props => {
           <Input 
             id='email'
             label='Email Address' 
-            keyboardType='email-address'
+            keyboardType="email-address"
             required
             email
             autoCapitalize="none"
@@ -122,11 +120,11 @@ const AuthScreen = props => {
             initialValue=""
           />
           <Input 
-            id='email'
+            id='password'
             label='Password' 
             keyboardType='default'
-            secureTextEntry
             required
+            secureTextEntry
             minLength={5}
             autoCapitalize="none"
             errorText="Please enter a valid password."
@@ -150,7 +148,7 @@ const AuthScreen = props => {
         </ScrollView>
       </Card>
       
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
