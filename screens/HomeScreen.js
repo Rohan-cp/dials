@@ -27,8 +27,7 @@ HomeScreen.navigationOptions = navigationData => {
           </View>
         </TouchableOpacity>
       );
-    },
-    headerBackImage: () => <Image source={{uri: 'https://imgur.com/P2nDq7b'}} />
+    }
   };
 };
 

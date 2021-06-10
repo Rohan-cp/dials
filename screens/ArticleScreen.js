@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity, Linking, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import dummyData from '../data/dummy-data';
 
 const ArticleScreen = props => {
   const [ isSelected, setIsSelected ] = useState(false);
@@ -22,10 +23,15 @@ const ArticleScreen = props => {
     });
   }, [isSelected]);
 
+  let article = '';
   const articleId = props.navigation.getParam('id');
-  const article = useSelector(state => {
-    return state.articles.articles.find(article => article.id == articleId)
-  });
+  if (__DEV__) {
+    article = dummyData.find(article => article.id == articleId);
+  } else {
+    article = useSelector(state => {
+      return state.articles.articles.find(article => article.id == articleId)
+    });
+  }
 
   return(
     <ScrollView >

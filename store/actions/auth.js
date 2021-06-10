@@ -10,21 +10,13 @@ export const LOGIN = 'LOGIN';
 
 export const signup = (email, password) => {
   return async dispatch => {
-    const response = await fetch(
-      'https://rn-test-d3ab9-default-rtdb.firebaseio.com/test.json'
-    , {
-      method: 'POST',
-      headers: {
-        'Content-type' : 'applications/json'
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      }),
-    });
-
-    const resData = await response.json();
-    console.log(resData);
+  const response = a.post('https://knologic.chickenkiller.com:4000/user/create', 
+  {email: email, password: password, name: 'johnS'})
+  .then(response => {
+    console.log(JSON.stringify(response));
+  }).catch(err => {
+    console.log(JSON.stringify(err));
+  })
     dispatch({ type: SIGNUP })
   };
 };

@@ -1,19 +1,27 @@
-import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import React from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 
-const SavedItem = props => {
+const SavedItem = (props) => {
   return (
     <TouchableOpacity onPress={props.onSelect}>
       <View style={styles.root}>
-        <View style={styles.imageContainer} >
-          <ImageBackground source={{uri: props.item.photo}} style={{
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
-  }} >
-          </ImageBackground>
+        <View style={styles.imageContainer}>
+          <ImageBackground
+            source={{ uri: props.item.photo }}
+            style={{
+              flex: 1,
+              resizeMode: "cover",
+              justifyContent: "center",
+            }}
+          ></ImageBackground>
         </View>
-        <View style={styles.textContainer} >
+        <View style={styles.textContainer}>
           <Text style={styles.title} numberOfLines={3}>
             {props.item.title + "\n\n"}
           </Text>
@@ -27,33 +35,33 @@ const SavedItem = props => {
 const styles = StyleSheet.create({
   root: {
     height: 100,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginVertical: 10,
     marginHorizontal: 10,
     borderRadius: 10,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   imageContainer: {
     width: 70,
     height: 70,
     margin: 16,
     borderRadius: 11,
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   textContainer: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexShrink: 1,
     marginTop: 20,
   },
-  title: { 
-    flexShrink: 1, 
+  title: {
+    flexShrink: 1,
     fontSize: 16,
-    fontWeight: 'bold',
-    width: '100%'
+    fontWeight: "bold",
+    width: "100%",
   },
   byLine: {
-    marginLeft: '50%',
-  }
+    marginLeft: "50%",
+  },
 });
 
 export default SavedItem;
