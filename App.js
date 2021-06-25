@@ -22,7 +22,7 @@ import {
 } from '@expo-google-fonts/lato'
 
 import articlesReducer from './store/reducers/articles';
-import { SafeAreaView } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 
 enableScreens();
 
@@ -58,8 +58,8 @@ export default function App() {
   */
   return (
     <Provider store={store}>
-      <MainNavigator/>
       <StatusBar style="dark" />
+      <MainNavigator/>
     </Provider>
   );
 }

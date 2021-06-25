@@ -5,11 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 const HomeScreen = props => {
   return (
-    <View style={{backgroundColor: '#E8EFF7'}}>
-      <SafeAreaView style={styles.container}>
-        <CarouselCards navigation={props.navigation}/>
-      </SafeAreaView>
-    </View>
+    <CarouselCards navigation={props.navigation}/>
   );
 };
 
@@ -32,13 +28,6 @@ HomeScreen.navigationOptions = navigationData => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#E8EFF7',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 50,
-    marginTop: 20,
-  },
   iconContainer: {
     paddingRight: 15
   }

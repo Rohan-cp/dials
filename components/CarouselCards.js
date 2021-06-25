@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
+import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight, SafeAreaView } from "react-native";
 import { getDailyDigest } from '../store/actions/articles';
 import DUMMY_DATA from '../data/dummy-data';
 export const SLIDER_WIDTH = Dimensions.get('window').width + (0.22 * Dimensions.get('window').width)
@@ -12,6 +12,7 @@ const CarouselCards = (props) => {
   const isCarousel = React.useRef(null);
   const dispatch = useDispatch();
   let data = '';
+
   if (__DEV__) {
     data = DUMMY_DATA.filter((article) => article.id == 'a1' || article.id == 'a2' || article.id == 'a3')
   } else {
@@ -61,7 +62,7 @@ const CarouselCards = (props) => {
   }
 
   return (
-    <View>
+    <View style={styles.screen} >
       <Carousel
         layout="tinder"
         layoutCardOffset={8}
@@ -93,6 +94,13 @@ const CarouselCards = (props) => {
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: '#E8EFF7',
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    paddingTop: 20,
+    paddingBottom: 20, 
+  },
   container: {
     backgroundColor: 'white',
     borderRadius: 8,
