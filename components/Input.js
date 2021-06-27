@@ -64,13 +64,13 @@ const Input = props => {
 
   return (
     <View style={styles.formControl}>
-      <Text style={styles.label}>{props.label}</Text>
       <TextInput
         {...props}
         style={styles.input}
         value={inputState.value}
         onChangeText={textChangeHandler}
         onBlur={lostFocusHandler}
+        placeholder={props.label}
       />
       {!inputState.isValid && inputState.touched && (
         <View style={styles.errorContainer}>
@@ -83,17 +83,19 @@ const Input = props => {
 
 const styles = StyleSheet.create({
   formControl: {
-    width: '100%'
+    flex: 1,
   },
   label: {
     fontWeight: 'bold',
     marginVertical: 8
   },
   input: {
-    paddingHorizontal: 2,
-    paddingVertical: 5,
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    marginTop: 15,
+    width: '100%',
   },
   errorContainer: {
     marginVertical: 5
