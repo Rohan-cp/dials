@@ -10,6 +10,7 @@ import ArticleScreen from '../screens/ArticleScreen';
 import SavedScreen from '../screens/SavedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AuthScreen from '../screens/AuthScreen';
+import ResetPasswordScreen from '../screens/ResetPasswordScreen';
 
 const HomeNavigator = createStackNavigator({
   Home: {
@@ -57,6 +58,12 @@ const ProfileNavigator = createStackNavigator({
     navigationOptions: {
       headerTitle: 'Join Us',
     }
+  },
+  Reset: {
+    screen: ResetPasswordScreen,
+    navigationOptions: {
+      headerTitle: 'Reset Password',
+    },
   }
 });
 

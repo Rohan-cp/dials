@@ -2,17 +2,13 @@ import React, { useState, useReducer, useCallback, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  ScrollView,
   Alert,
   Image,
-  Text,
-  TouchableOpacity,
 } from "react-native";
-import { useDispatch } from "react-redux";
 
-import Input from "../components/Input";
 import Colors from "../constants/Colors";
-import * as authActions from "../store/actions/auth";
+import LoginScreen from "../components/Login";
+import SignupScreen from "../components/Signup";
 
 const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
 
@@ -40,7 +36,8 @@ const formReducer = (state, action) => {
   return state;
 };
 
-const AuthScreen = () => {
+const AuthScreen = props => {
+  const [isCreateNew, setIsCreateNew] = useState(false);
   const [error, setError] = useState();
 
   const [formState, dispatchFormState] = useReducer(formReducer, {
@@ -73,78 +70,18 @@ const AuthScreen = () => {
     [dispatchFormState]
   );
 
+  let content;
+
+  if (isCreateNew) {
+    content =  <SignupScreen navigation={props.navigation} onLogin={setIsCreateNew} inputChangeHandler={inputChangeHandler} />
+  } else {
+    content = <LoginScreen navigation={props.navigation} onCreateNew={setIsCreateNew} inputChangeHandler={inputChangeHandler} />;
+  }
+
   return (
     <View style={styles.screen}>
       <Image source={require("../assets/logo.png")} style={styles.image} />
-      <View style={{ flexDirection: "row" }}>
-        <Text style={{ fontSize: 17, color: "#202020", fontWeight: "300" }}>
-          If you are new /{" "}
-        </Text>
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={{ color: "#3480FF", fontSize: 17, fontWeight: "300" }}>
-            Create New
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{ width: "65%", paddingTop: 30 }}>
-        <ScrollView>
-          <Input
-            id="email"
-            label="Email Address"
-            keyboardType="email-address"
-            required
-            email
-            autoCapitalize="none"
-            errorText="Please enter a valid email address."
-            onInputChange={inputChangeHandler}
-            initialValue=""
-          />
-          <Input
-            id="password"
-            label="Password"
-            keyboardType="default"
-            required
-            secureTextEntry
-            minLength={5}
-            autoCapitalize="none"
-            errorText="Please enter a valid password."
-            onInputChange={inputChangeHandler}
-            initialValue=""
-          />
-        </ScrollView>
-      </View>
-      <View style={{ flexDirection: "row", paddingTop: 30 }}>
-        <Text style={{ fontSize: 16, color: "#202020", fontWeight: "300" }}>
-          Forgot Password? /{" "}
-        </Text>
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={{ color: "#3480FF", fontSize: 16, fontWeight: "300" }}>
-            Reset
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        onPress={() => {}}
-        style={{
-          borderRadius: 10,
-          backgroundColor: "#3480FF",
-          marginTop: 30,
-          paddingVertical: 15,
-          paddingHorizontal: 90,
-          width: '65%'
-        }}
-      >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            fontWeight: "400",
-            textAlign: 'center'
-          }}
-        >
-          Login
-        </Text>
-      </TouchableOpacity>
+      {content}
     </View>
   );
 };
@@ -154,15 +91,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primaryColor,
     alignItems: "center",
-  },
-  authContainer: {
-    width: "80%",
-    maxWidth: 400,
-    maxHeight: 400,
-    padding: 20,
-  },
-  buttonContainer: {
-    marginTop: 10,
   },
   image: {
     width: 150,
