@@ -43,6 +43,7 @@ const formReducer = (state, action) => {
 };
 
 const AuthScreen = props => {
+  console.log("wrong");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [isSignup, setIsSignup] = useState(false);
@@ -147,7 +148,6 @@ const AuthScreen = props => {
             onPress={() => setIsSignup(prevState => !prevState)} />
         </ScrollView>
       </Card>
-      
     </View>
   );
 };

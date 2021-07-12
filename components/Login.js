@@ -54,14 +54,14 @@ const LoginScreen = props => {
         </ScrollView>
       </View>
       <View style={{ flexDirection: "row", paddingTop: 30 }}>
-        <Text style={{ fontSize: 16, color: "#202020", fontWeight: "300" }}>
+        <Text style={{ fontSize: 15, color: "rgba(2, 2, 2, 0.7)", fontWeight: "300" }}>
           Forgot Password? /{" "}
         </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Reset')}>
           <Text style={styles.resetButtonText}>Reset</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => {}} style={styles.submitButton}>
+      <TouchableOpacity onPress={props.onSubmit} style={styles.submitButton}>
         <Text style={styles.submitButtonText}>Login</Text>
       </TouchableOpacity>
     </>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 90,
     width: "65%",
   },
-  resetButtonText: { color: "#3480FF", fontSize: 16, fontWeight: "300" },
+  resetButtonText: { color: "#3480FF", fontSize: 15, fontWeight: "300" },
 });
 
 export default LoginScreen;

@@ -24,7 +24,7 @@ export const signup = (email, password) => {
 export const login = (email, password) => {
   return async dispatch => {
     const response = a.post('https://knologic.chickenkiller.com:4000/user/login', 
-  {email: 'jo', password: 'jo'})
+  {email: 'test@a.com', password: 'test123'})
   .then(response => {
     console.log(JSON.stringify(response));
   }).catch(err => {

@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useCallback, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import {
   View,
   StyleSheet,
@@ -9,12 +10,12 @@ import {
 import Colors from "../constants/Colors";
 import LoginScreen from "../components/Login";
 import SignupScreen from "../components/Signup";
+import { signup, login } from "../store/actions/auth";
 
 const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
 
 const formReducer = (state, action) => {
   if (action.type === FORM_INPUT_UPDATE) {
-    console.log(action.input);
     const updatedValues = {
       ...state.inputValues,
       [action.input]: action.value,
@@ -71,11 +72,22 @@ const AuthScreen = props => {
   );
 
   let content;
+  const dispatch = useDispatch();
+
+  const onSignup = () => {
+    console.log(formState);
+    dispatch(signup(formState.inputValues.email, formState.inputValues.password));
+  }
+
+  const onLogin = () => {
+    console.log(formState);
+    dispatch(login(formState.inputValues.email, formState.inputValues.password));
+  }
 
   if (isCreateNew) {
-    content =  <SignupScreen navigation={props.navigation} onLogin={setIsCreateNew} inputChangeHandler={inputChangeHandler} />
+    content =  <SignupScreen navigation={props.navigation} onSubmit={onSignup} onLogin={setIsCreateNew} inputChangeHandler={inputChangeHandler} />
   } else {
-    content = <LoginScreen navigation={props.navigation} onCreateNew={setIsCreateNew} inputChangeHandler={inputChangeHandler} />;
+    content = <LoginScreen navigation={props.navigation} onSubmit={onLogin} onCreateNew={setIsCreateNew} inputChangeHandler={inputChangeHandler} />;
   }
 
   return (

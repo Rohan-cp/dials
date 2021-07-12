@@ -65,7 +65,7 @@ const SignupScreen = props => {
           />
         </ScrollView>
       </View>
-      <TouchableOpacity onPress={() => {}} style={styles.submitButton}>
+      <TouchableOpacity onPress={props.onSubmit} style={styles.submitButton}>
         <Text style={styles.submitButtonText}>Sign Up</Text>
       </TouchableOpacity>
     </>
