@@ -50,7 +50,7 @@ const ProfileNavigator = createStackNavigator({
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
-      headerTitle: 'Your Profile',
+      headerTitle: 'My Account',
     }
   },
   Auth: {

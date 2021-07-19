@@ -14,7 +14,7 @@ const CarouselCards = (props) => {
   let data = '';
 
   if (__DEV__) {
-    data = DUMMY_DATA.filter((article) => article.id == 'a1' || article.id == 'a2' || article.id == 'a3')
+    data = DUMMY_DATA.filter((article) => article.id == 'a1' || article.id == 'a2' || article.id == 'a3' || article.id == 'a21')
   } else {
     useEffect(() => {
       dispatch(getDailyDigest())

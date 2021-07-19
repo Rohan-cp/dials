@@ -41,7 +41,7 @@ export default data = [new Article(
     "What Does Randomness Look Like?"
   ),
   new Article(
-    "a3",
+    "a21",
     "Eric Broug",
     {
       name: "Design",
@@ -56,6 +56,19 @@ export default data = [new Article(
     "https://teded.tumblr.com/post/161621187719/the-complex-geometry-of-islamic-design",
     "https://imgur.com/zBGXqV1.png",
     "The Complex Geometry of Islamic Design"
+  ),
+  new Article(
+    "a3",
+    "MIT Media Labs",
+    {
+      name: "Technology",
+      color: 'pink',
+    },
+    Date(),
+    "Sleep is a forgotten country of the mind. A vast majority of our technologies are built for our waking state, even though a third of our lives are spent asleep. Current technological interfaces miss an opportunity to access the unique, imaginative, elastic cognition ongoing during dreams and semi-lucid states. In turn, each of us misses an opportunity to use interfaces to influence our own processes of memory consolidation, creative insight generation, gist extraction, and emotion regulation that are so deeply sleep-dependent. In this project, we explore ways to augment human creativity by extending, influencing, and capturing dreams in Stage 1 sleep. It is currently impossible to force ourselves to be creative because so much creative idea association and creative incubation happens in the absence of executive control and directed attention. Sleep offers an opportunity for prompting creative thought in the absence of directed attention, if only dreams can be controlled.",
+    "https://teded.tumblr.com/post/161621187719/the-complex-geometry-of-islamic-design",
+    "https://imgur.com/zBGXqV1.png",
+    "Dormio: Interfacing with Dreams"
   ), 
   new Article(
     "a4",

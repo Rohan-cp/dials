@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingVertical: 15,
     paddingHorizontal: 90,
+    marginBottom: 5,
     width: "65%",
   },
   resetButtonText: { color: "#3480FF", fontSize: 15, fontWeight: "300" },
