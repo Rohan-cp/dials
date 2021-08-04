@@ -43,6 +43,12 @@ const SavedNavigator = createStackNavigator({
     navigationOptions: {
       headerTitle: 'Saved Articles',
     }
+  },
+  Article: {
+    screen: ArticleScreen,
+    navigationOptions: {
+      headerTitle: 'Article',
+    }
   }
 });
 

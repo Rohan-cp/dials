@@ -5,11 +5,17 @@ import Colors from '../constants/Colors';
 import data from '../data/dummy-data';
 import Article from "../models/Article";
 
-const SavedScreen = () => {
+const SavedScreen = props => {
   const DATA = data;
 
+  const navigateToArticle = (itemId) => {
+    return props.navigation.navigate('Article', {
+      id: itemId
+    });
+  };
+
   const renderSavedItem = itemData => {
-    return <SavedItem onSelect={() => {}} item={itemData.item} />;
+    return <SavedItem onSelect={navigateToArticle} item={itemData.item} />;
   };
 
   return (

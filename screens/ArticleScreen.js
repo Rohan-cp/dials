@@ -34,6 +34,7 @@ const ArticleScreen = (props) => {
   }, [isSelected]);
 
   let article = "";
+  
   const articleId = props.navigation.getParam("id");
   if (__DEV__) {
     article = dummyData.find((article) => article.id == articleId);

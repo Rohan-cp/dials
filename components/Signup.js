@@ -68,7 +68,7 @@ const SignupScreen = (props) => {
         </ScrollView>
       </View>
       {props.isLoading ? (
-        <ActivityIndicator size='small' color={'black'} style={{marginTop: 30}}/>
+        <ActivityIndicator size='small' color={'black'} style={{marginTop: 43}}/>
       ) : (
         <TouchableOpacity onPress={props.onSubmit} style={styles.submitButton}>
           <Text style={styles.submitButtonText}>Sign Up</Text>

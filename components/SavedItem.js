@@ -9,7 +9,7 @@ import {
 
 const SavedItem = (props) => {
   return (
-    <TouchableOpacity onPress={props.onSelect}>
+    <TouchableOpacity onPress={() => props.onSelect(props.item.id)} activeOpacity={0.7}>
       <View style={styles.root}>
         <View style={styles.imageContainer}>
           <ImageBackground
