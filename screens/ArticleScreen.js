@@ -12,7 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import dummyData from "../data/dummy-data";
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 
 const ArticleScreen = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -44,13 +44,13 @@ const ArticleScreen = (props) => {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.screen}>
+    <ScrollView style={{ backgroundColor: Colors.primaryColor }}>
+      <View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{article.title}</Text>
         </View>
         <Text style={styles.body}>{article.description}</Text>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: "center" }}>
           <TouchableOpacity
             style={styles.sourceButton}
             onPress={() => Linking.openURL(article.link)}
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#3480FF",
     marginTop: 15,
+    marginBottom: 17,
     paddingVertical: 15,
     width: "65%",
   },
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 17,
     fontWeight: "500",
-    textAlign: 'center'
+    textAlign: "center",
   },
 });
 

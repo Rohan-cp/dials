@@ -1,18 +1,20 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   ScrollView,
   Text,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator,
 } from "react-native";
+import Colors from "../constants/Colors";
 
 import Input from "./Input";
 
-const SignupScreen = props => {
+const SignupScreen = (props) => {
   return (
     <>
-    <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row" }}>
         <Text style={{ fontSize: 17, color: "#202020", fontWeight: "300" }}>
           If you have an account /{" "}
         </Text>
@@ -65,9 +67,13 @@ const SignupScreen = props => {
           />
         </ScrollView>
       </View>
-      <TouchableOpacity onPress={props.onSubmit} style={styles.submitButton}>
-        <Text style={styles.submitButtonText}>Sign Up</Text>
-      </TouchableOpacity>
+      {props.isLoading ? (
+        <ActivityIndicator size='small' color={'black'} style={{marginTop: 30}}/>
+      ) : (
+        <TouchableOpacity onPress={props.onSubmit} style={styles.submitButton}>
+          <Text style={styles.submitButtonText}>Sign Up</Text>
+        </TouchableOpacity>
+      )}
     </>
   );
 };

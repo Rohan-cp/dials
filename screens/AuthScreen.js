@@ -1,10 +1,11 @@
 import React, { useState, useReducer, useCallback, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import {
   View,
   StyleSheet,
   Alert,
   Image,
+  ActivityIndicator,
 } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -37,9 +38,16 @@ const formReducer = (state, action) => {
   return state;
 };
 
-const AuthScreen = props => {
+const AuthScreen = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isCreateNew, setIsCreateNew] = useState(false);
   const [error, setError] = useState();
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert('An Error Occurred!', error, [{ text: 'Okay' }])
+    }
+  }, [error]);
 
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
@@ -52,12 +60,6 @@ const AuthScreen = props => {
     },
     formIsValid: false,
   });
-
-  useEffect(() => {
-    if (error) {
-      Alert.alert("An Error Occurred!", error, [{ text: "Okay" }]);
-    }
-  }, [error]);
 
   const inputChangeHandler = useCallback(
     (inputIdentifier, inputValue, inputValidity) => {
@@ -74,20 +76,54 @@ const AuthScreen = props => {
   let content;
   const dispatch = useDispatch();
 
-  const onSignup = () => {
-    console.log(formState);
-    dispatch(signup(formState.inputValues.email, formState.inputValues.password));
-  }
+  const onSignup = async () => {
+    // console.log(formState);
+    setIsLoading(true);
+    setError(null);
+    try {
+      await dispatch(
+        signup(formState.inputValues.email, formState.inputValues.password)
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  };
 
-  const onLogin = () => {
-    console.log(formState);
-    dispatch(login(formState.inputValues.email, formState.inputValues.password));
-  }
+  const onLogin = async () => {
+    // console.log(formState);
+    setIsLoading(true);
+    try {
+      await dispatch(
+        login(formState.inputValues.email, formState.inputValues.password)
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+
+    setIsLoading(false);
+  };
 
   if (isCreateNew) {
-    content =  <SignupScreen navigation={props.navigation} onSubmit={onSignup} onLogin={setIsCreateNew} inputChangeHandler={inputChangeHandler} />
+    content = (
+      <SignupScreen
+        navigation={props.navigation}
+        onSubmit={onSignup}
+        onLogin={setIsCreateNew}
+        inputChangeHandler={inputChangeHandler}
+        isLoading={isLoading}
+      />
+    );
   } else {
-    content = <LoginScreen navigation={props.navigation} onSubmit={onLogin} onCreateNew={setIsCreateNew} inputChangeHandler={inputChangeHandler} />;
+    content = (
+      <LoginScreen
+        navigation={props.navigation}
+        onSubmit={onLogin}
+        onCreateNew={setIsCreateNew}
+        inputChangeHandler={inputChangeHandler}
+        isLoading={isLoading}
+      />
+    );
   }
 
   return (
