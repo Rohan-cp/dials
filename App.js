@@ -22,12 +22,13 @@ import {
 } from '@expo-google-fonts/lato'
 
 import articlesReducer from './store/reducers/articles';
-import { View, SafeAreaView } from 'react-native';
+import authReducer from './store/reducers/auth';
 
 enableScreens();
 
 const rootReducer = combineReducers({
   articles: articlesReducer,
+  auth: authReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

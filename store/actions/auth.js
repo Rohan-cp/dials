@@ -35,7 +35,7 @@ export const signup = (email, password) => {
     const resData = await response.json();
     console.log(resData);
 
-    dispatch({ type: SIGNUP });
+    dispatch({ type: SIGNUP, token: resData.sessionId, userId: resData.userId });
   };
 };
 

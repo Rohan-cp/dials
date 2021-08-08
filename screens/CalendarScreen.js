@@ -3,7 +3,7 @@ import { Button, SafeAreaView, StyleSheet, TouchableOpacity, View, Text } from '
 import {Calendar} from 'react-native-calendars';
 
 const CalendarScreen = props => {
-  const [selected, setSelected] = useState(Date());
+  const [selected, setSelected] = useState(props.navigation.getParam('date'));
 
   const onDayPress = day => {
     setSelected(day.dateString);
@@ -11,6 +11,7 @@ const CalendarScreen = props => {
 
   const onSaveHandler = () => {
     // props.onSave();
+    props.navigation.setParams({date: selected})
     props.navigation.goBack();
   }
 

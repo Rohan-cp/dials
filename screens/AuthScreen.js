@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Alert,
   Image,
-  ActivityIndicator,
 } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -45,7 +44,7 @@ const AuthScreen = (props) => {
 
   useEffect(() => {
     if (error) {
-      Alert.alert('An Error Occurred!', error, [{ text: 'Okay' }])
+      Alert.alert("An Error Occurred!", error, [{ text: "Okay" }]);
     }
   }, [error]);
 
@@ -86,8 +85,8 @@ const AuthScreen = (props) => {
       );
     } catch (error) {
       setError(error.message);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const onLogin = async () => {
@@ -99,9 +98,8 @@ const AuthScreen = (props) => {
       );
     } catch (error) {
       setError(error.message);
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   if (isCreateNew) {
