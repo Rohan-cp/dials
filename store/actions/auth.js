@@ -20,11 +20,11 @@ export const signup = (email, password) => {
 
       // see what kind of response we get from the API we're working with
       const errorId = errorResData.error.message;
-      let message = 'Something went wrong!';
+      let message = "Something went wrong!";
 
       // example error
-      if (errorId === 'EMAIL_NOT_FOUND') {
-        message = 'This email could not be found';
+      if (errorId === "EMAIL_NOT_FOUND") {
+        message = "This email could not be found";
       }
 
       // not sure what below line does
@@ -35,7 +35,11 @@ export const signup = (email, password) => {
     const resData = await response.json();
     console.log(resData);
 
-    dispatch({ type: SIGNUP, token: resData.sessionId, userId: resData.userId });
+    dispatch({
+      type: SIGNUP,
+      token: resData.data.sessionId,
+      userId: resData.data.userId,
+    });
   };
 };
 
@@ -53,5 +57,26 @@ export const login = (email, password) => {
         console.log(JSON.stringify(err));
       });
     dispatch({ type: LOGIN });
+  };
+};
+
+export const fetchUserData = () => {
+  return async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    const response = a
+      .post("https://knologic.chickenkiller.com:4000/user")
+      .then((response) => {
+        console.log(JSON.stringify(response));
+        const resData = await response.json();
+        const loadedUserdata = {
+          username: resData.username,
+          emailId: resData.emailId,
+          password: resData.password,
+        };
+        dispatch({ type: GET_USERDATA, userData: loadedUserdata });
+      })
+      .catch((err) => {
+        console.log(JSON.stringify(err));
+      });
   };
 };
