@@ -1,12 +1,21 @@
-import React from 'react';
-import { View, StyleSheet, Touchable, TouchableOpacity } from 'react-native';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Touchable,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 
-const Entry = props => {
+const Entry = (props) => {
   return (
     <View style={styles.screen}>
       <View>
-        <Text>{props.category}</Text>
-        <Text>{props.userdata}</Text>
+        <View style={{marginBottom: 7,}}>
+          <Text style={styles.categoryText}>{props.category}</Text>
+        </View>
+
+        <Text style={styles.userdataText}>{props.userdata}</Text>
       </View>
       <TouchableOpacity onPress={props.onPress} style={styles.editButton}>
         <Text style={styles.editButtonText}>Edit</Text>
@@ -17,16 +26,29 @@ const Entry = props => {
 
 const styles = StyleSheet.create({
   screen: {
-    justifyContent: 'space-between',
-    margin: 40,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: "6%",
+    marginVertical: '6%',
+    width: "87%",
   },
   editButton: {
-    backgroundColor: '#3480FF',
+    backgroundColor: "#3480FF",
     height: 34,
     width: 69,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 7,
   },
   editButtonText: {
-    color: 'rgba(255,255,255,0.8)',
+    color: "rgba(255,255,255,0.8)",
+    fontSize: 15,
+  },
+  categoryText: {
+    fontSize: 14,
+  },
+  userdataText: {
+    fontSize: 16,
   },
 });
 

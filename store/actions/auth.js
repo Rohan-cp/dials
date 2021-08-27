@@ -7,6 +7,7 @@ const a = axios.create({
 
 export const SIGNUP = "SIGNUP";
 export const LOGIN = "LOGIN";
+export const FETCH = "FETCH";
 
 export const signup = (email, password) => {
   return async (dispatch) => {
@@ -65,7 +66,7 @@ export const fetchUserData = () => {
     const userId = getState().auth.userId;
     const response = a
       .post("https://knologic.chickenkiller.com:4000/user")
-      .then((response) => {
+      .then(async (response) => {
         console.log(JSON.stringify(response));
         const resData = await response.json();
         const loadedUserdata = {

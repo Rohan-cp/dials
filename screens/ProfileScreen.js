@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import Entry from "../components/Entry";
 import { fetchUserData } from "../store/actions/auth";
 
@@ -10,7 +10,7 @@ const ProfileScreen = (props) => {
   });
   let content;
 
-  if (!data.tokenId) {
+  if (!data.tokenId && !__DEV__) {
     content = (
       <View style={styles.screen}>
         <Text>You need to sign in to see your profile!</Text>
@@ -21,32 +21,42 @@ const ProfileScreen = (props) => {
       </View>
     );
   } else {
+    const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchUserData());
     }, [dispatch]);
 
-    userdata = useSelector((state) => {
+    let userdata = useSelector((state) => {
       return state.auth;
     });
 
+    if (__DEV__) {
+      userdata = {
+        displayName: "Rcp",
+        emailId: "rohancp9@gmail.com",
+        password: "*********",
+      };
+    }
+
     content = (
       <View style={styles.profileScreen}>
-        <View style={{marginTop: '5%'}}>
-          <Text style={styles.greeting}>Hey, Rohan</Text>
+        <View style={{ marginTop: "5%" }}>
+          <Text style={styles.greeting}>Hey, {userdata.displayName}</Text>
         </View>
         <View style={styles.displayBox}>
-          <Entry />
-          <Entry />
-          <Entry />
+          <Entry category="Display Name" userdata={userdata.displayName} />
+          <Entry category="Email" userdata={userdata.emailId} />
+          <Entry category="Password" userdata={userdata.password} />
         </View>
-        <Button
-          title="Sign Out"
-          onPress={() => {}}
-        />
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity onPress={() => {}} style={styles.signOutButton}>
+            <Text style={styles.signOutButtonText}>Sign Out</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
-  return { content };
+  return content;
 };
 
 const styles = StyleSheet.create({
@@ -57,14 +67,33 @@ const styles = StyleSheet.create({
   },
   profileScreen: {
     flex: 1,
-    alignItems: "center",
+    backgroundColor: "#E8EFF7",
   },
   greeting: {
     fontSize: 35,
+    fontWeight: "300",
+    marginLeft: "12%",
   },
   displayBox: {
-    backgroundColor: 'rgba(142, 195, 255, 0.4)',
-  }
+    backgroundColor: "white",
+    marginHorizontal: "12%",
+    marginTop: 15,
+    borderRadius: 8,
+  },
+  signOutButton: {
+    borderRadius: 10,
+    backgroundColor: "#3480FF",
+    marginTop: 20,
+    paddingVertical: 15,
+    marginBottom: 5,
+    width: "76%",
+  },
+  signOutButtonText: {
+    color: "white",
+    fontSize: 19,
+    fontWeight: "400",
+    textAlign: "center",
+  },
 });
 
 export default ProfileScreen;
