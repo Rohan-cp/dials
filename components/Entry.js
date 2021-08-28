@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   editButtonText: {
-    color: "rgba(255,255,255,0.8)",
+    color: "rgba(255,255,255,0.9)",
     fontSize: 15,
   },
   categoryText: {

@@ -23,12 +23,13 @@ import {
 
 import articlesReducer from './store/reducers/articles';
 import authReducer from './store/reducers/auth';
-
+import dateReducer from './store/reducers/date';
 enableScreens();
 
 const rootReducer = combineReducers({
   articles: articlesReducer,
-  auth: authReducer
+  auth: authReducer,
+  date: dateReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

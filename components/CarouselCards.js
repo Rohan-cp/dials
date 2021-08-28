@@ -3,27 +3,12 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
 import { getDailyDigest } from '../store/actions/articles';
-import DUMMY_DATA from '../data/dummy-data';
 export const SLIDER_WIDTH = Dimensions.get('window').width + (0.22 * Dimensions.get('window').width)
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 
 const CarouselCards = (props) => {
   const [index, setIndex] = React.useState(0);
   const isCarousel = React.useRef(null);
-  const dispatch = useDispatch();
-  let data = '';
-
-  if (__DEV__) {
-    data = DUMMY_DATA.filter((article) => article.id == 'a1' || article.id == 'a2' || article.id == 'a3' || article.id == 'a21')
-  } else {
-    useEffect(() => {
-      dispatch(getDailyDigest())
-    }, [dispatch]);
-  
-    data = useSelector(state => {
-      return state.articles.articles;
-    });
-  }
 
   const navigateToArticle = (itemId) => {
     return props.navigation.navigate('Article', {
@@ -67,7 +52,7 @@ const CarouselCards = (props) => {
         layout="tinder"
         layoutCardOffset={8}
         ref={isCarousel}
-        data={data}
+        data={props.data}
         renderItem={CarouselCardItem}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
@@ -75,7 +60,7 @@ const CarouselCards = (props) => {
         useScrollView={true}
       />
       <Pagination
-        dotsLength={data.length}
+        dotsLength={props.data.length}
         activeDotIndex={index}
         carouselRef={isCarousel}
         dotStyle={{

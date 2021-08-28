@@ -1,4 +1,3 @@
-import data from '../../data/dummy-data';
 import { GET_DAILY_DIGEST } from '../actions/articles';
 
 const initialState = {
