@@ -32,7 +32,7 @@ const ProfileScreen = (props) => {
 
     if (__DEV__) {
       userdata = {
-        displayName: "Rcp",
+        displayName: "Rcpgijopkokpkpkpk",
         emailId: "rohancp9@gmail.com",
         password: "*********",
       };
@@ -40,8 +40,8 @@ const ProfileScreen = (props) => {
 
     content = (
       <View style={styles.profileScreen}>
-        <View style={{ marginTop: "5%" }}>
-          <Text style={styles.greeting}>Hey, {userdata.displayName}</Text>
+        <View style={{ marginTop: "5%", marginLeft: "12%", maxWidth: '75%' }}>
+          <Text style={styles.greeting} numberOfLines={1} >Hey, {userdata.displayName}</Text>
         </View>
         <View style={styles.displayBox}>
           <Entry category="Display Name" userdata={userdata.displayName} />
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 35,
     fontWeight: "300",
-    marginLeft: "12%",
   },
   displayBox: {
     backgroundColor: "white",

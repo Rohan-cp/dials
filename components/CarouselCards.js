@@ -1,8 +1,6 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from "react-native";
-import { getDailyDigest } from '../store/actions/articles';
 export const SLIDER_WIDTH = Dimensions.get('window').width + (0.22 * Dimensions.get('window').width)
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
 

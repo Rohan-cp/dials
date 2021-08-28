@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  Touchable,
   TouchableOpacity,
   Text,
 } from "react-native";
@@ -12,10 +11,10 @@ const Entry = (props) => {
     <View style={styles.screen}>
       <View>
         <View style={{marginBottom: 7,}}>
-          <Text style={styles.categoryText}>{props.category}</Text>
+          <Text style={styles.categoryText} numberOfLines={1} >{props.category}</Text>
         </View>
 
-        <Text style={styles.userdataText}>{props.userdata}</Text>
+        <Text style={styles.userdataText} numberOfLines={1}>{props.userdata}</Text>
       </View>
       <TouchableOpacity onPress={props.onPress} style={styles.editButton}>
         <Text style={styles.editButtonText}>Edit</Text>
@@ -43,12 +42,15 @@ const styles = StyleSheet.create({
   editButtonText: {
     color: "rgba(255,255,255,0.9)",
     fontSize: 15,
+    maxWidth: 180
   },
   categoryText: {
     fontSize: 14,
+    maxWidth: 180
   },
   userdataText: {
     fontSize: 16,
+    maxWidth: 180,
   },
 });
 
