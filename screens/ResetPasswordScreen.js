@@ -17,21 +17,27 @@ const ResetPasswordPage = (props) => {
         onInputChange={props.inputChangeHandler}
         initialValue=""
       />
-      <TouchableOpacity onPress={() => {}} style={styles.submitButton}>
-        <Text style={styles.submitButtonText}>Sign Up</Text>
+      <TouchableOpacity onPress={() => {}} style={styles.confirmButton}>
+        <Text style={styles.confirmButtonText}>Confirm</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  submitButton: {
+  confirmButton: {
     borderRadius: 10,
     backgroundColor: "#3480FF",
     marginTop: 30,
     paddingVertical: 15,
     paddingHorizontal: 90,
     width: "65%",
+  },
+  confirmButtonText: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "400",
+    textAlign: "center",
   },
 });
 

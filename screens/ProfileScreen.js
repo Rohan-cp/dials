@@ -44,9 +44,9 @@ const ProfileScreen = (props) => {
           <Text style={styles.greeting} numberOfLines={1} >Hey, {userdata.displayName}</Text>
         </View>
         <View style={styles.displayBox}>
-          <Entry category="Display Name" userdata={userdata.displayName} />
-          <Entry category="Email" userdata={userdata.emailId} />
-          <Entry category="Password" userdata={userdata.password} />
+          <Entry category="Display Name" userdata={userdata.displayName} navigation={props.navigation} />
+          <Entry category="Email" userdata={userdata.emailId} navigation={props.navigation} />
+          <Entry category="Password" userdata={userdata.password} navigation={props.navigation} />
         </View>
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity onPress={() => {}} style={styles.signOutButton}>

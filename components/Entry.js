@@ -1,22 +1,32 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-} from "react-native";
-
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+//
 const Entry = (props) => {
+  const onEditPress = () => {
+    if (props.category === "Password") {
+      props.navigation.navigate("PasswordEdit");
+    } else {
+      props.navigation.navigate("Edit", {
+        initialVal: props.userdata,
+        title: props.category,
+      });
+    }
+  };
+
   return (
     <View style={styles.screen}>
       <View>
-        <View style={{marginBottom: 7,}}>
-          <Text style={styles.categoryText} numberOfLines={1} >{props.category}</Text>
+        <View style={{ marginBottom: 7 }}>
+          <Text style={styles.categoryText} numberOfLines={1}>
+            {props.category}
+          </Text>
         </View>
 
-        <Text style={styles.userdataText} numberOfLines={1}>{props.userdata}</Text>
+        <Text style={styles.userdataText} numberOfLines={1}>
+          {props.userdata}
+        </Text>
       </View>
-      <TouchableOpacity onPress={props.onPress} style={styles.editButton}>
+      <TouchableOpacity onPress={onEditPress} style={styles.editButton}>
         <Text style={styles.editButtonText}>Edit</Text>
       </TouchableOpacity>
     </View>
@@ -28,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: "6%",
-    marginVertical: '6%',
+    marginVertical: "6%",
     width: "87%",
   },
   editButton: {
@@ -42,11 +52,11 @@ const styles = StyleSheet.create({
   editButtonText: {
     color: "rgba(255,255,255,0.9)",
     fontSize: 15,
-    maxWidth: 180
+    maxWidth: 180,
   },
   categoryText: {
     fontSize: 14,
-    maxWidth: 180
+    maxWidth: 180,
   },
   userdataText: {
     fontSize: 16,

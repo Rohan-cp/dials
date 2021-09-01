@@ -19,7 +19,7 @@ const HomeScreen = (props) => {
     );
   } else {
     const currDate = useSelector((state) => {
-      console.log(state.date.date);
+      // console.log(state.date.date);
       return state.date.date;
     });
     useEffect(() => {

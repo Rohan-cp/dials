@@ -11,6 +11,8 @@ import SavedScreen from '../screens/SavedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AuthScreen from '../screens/AuthScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
+import EditUserdataScreen from '../screens/EditUserdataScreen';
+import PasswordEditScreen from '../screens/PasswordEditScreen';
 
 const HomeNavigator = createStackNavigator({
   Home: {
@@ -70,6 +72,12 @@ const ProfileNavigator = createStackNavigator({
     navigationOptions: {
       headerTitle: 'Reset Password',
     },
+  },
+  Edit: {
+    screen: EditUserdataScreen
+  },
+  PasswordEdit: {
+    screen: PasswordEditScreen
   }
 });
 
