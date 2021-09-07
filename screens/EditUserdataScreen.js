@@ -35,6 +35,20 @@ const EditUserdataScreen = (props) => {
     }
   }, [isBlur, dispatch]);
 
+  let onDone;
+
+  if (title === "Display Name") {
+    onDone = useCallback(() => dispatch(updateUsername(val)));
+  } else if (title === "Email") {
+    onDone = useCallback(() => dispatch(updateEmail(val)));
+  }
+
+  useEffect(() => {
+    props.navigation.setParams({
+      onDone: onDone,
+    });
+  }, [val, dispatch]);
+
   useEffect(() => {
     props.navigation.setParams({ valid: isValid });
   }, [isValid]);
@@ -61,9 +75,11 @@ EditUserdataScreen.navigationOptions = (navigationData) => {
           <TouchableOpacity
             onPress={() => {
               console.log("hi");
+              navigationData.navigation.getParam("onDone")();
+              console.log("9999");
               navigationData.navigation.goBack();
             }}
-            disabled={navigationData.navigation.getParam('valid')}
+            disabled={navigationData.navigation.getParam("valid")}
           >
             <Text style={styles.submitButtonText}> Save </Text>
           </TouchableOpacity>
