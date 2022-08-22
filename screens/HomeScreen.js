@@ -14,8 +14,7 @@ const HomeScreen = (props) => {
       (article) =>
         article.id == "a1" ||
         article.id == "a2" ||
-        article.id == "a3" ||
-        article.id == "a21"
+        article.id == "a3"
     );
   } else {
     const currDate = useSelector((state) => {

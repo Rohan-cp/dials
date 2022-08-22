@@ -32,7 +32,7 @@ const ProfileScreen = (props) => {
 
     if (__DEV__) {
       userdata = {
-        displayName: "Rcpgijopkokpkpkpk",
+        displayName: "Rohan Cp",
         emailId: "rohancp9@gmail.com",
         password: "*********",
       };

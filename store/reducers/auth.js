@@ -6,6 +6,7 @@ const initialState = {
   displayName: null,
   emailId: null,
   password: null,
+  savedArticles: null,
 };
 
 export default (state = initialState, action) => {
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
         displayName: action.userData.username,
         emailId: action.userData.emailId,
         password: action.userData.password,
+        saved: action.userData.favorites,
       };
     }
     default:
