@@ -6,6 +6,8 @@
 Kno-logic is a mobile learning platform with a short number of curated articles added daily for lifelong learners. This app was built with [React Native](https://reactnative.dev/) and [Expo](https://expo.io/).
 
 ## Screenshots
+<img src="https://i.imgur.com/SxWoD8S.png" alt="home_screen" width="250" height="530" /> <img src="https://i.imgur.com/lpib2c0.png" alt="home_screen" width="250" height="530" />
+
 
 ## Planned Features
 * Customised User Interface based on running platform (android or ios)
