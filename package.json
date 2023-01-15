@@ -9,23 +9,24 @@
   },
   "dependencies": {
     "@expo-google-fonts/lato": "^0.1.0",
-    "@expo/vector-icons": "^12.0.0",
-    "@react-native-community/masked-view": "0.1.10",
+    "@expo/vector-icons": "^13.0.0",
+    "@react-native-community/masked-view": "^0.1.11",
+    "app-upgrade-react-native-sdk": "^1.0.7",
     "axios": "^0.21.1",
-    "expo": "~41.0.1",
-    "expo-app-loading": "^1.0.3",
-    "expo-font": "~9.1.0",
-    "expo-status-bar": "~1.0.4",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "expo": "^47.0.0",
+    "expo-app-loading": "~2.1.1",
+    "expo-font": "~11.0.1",
+    "expo-status-bar": "~1.4.2",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.5",
     "react-native-calendars": "^1.1260.0",
-    "react-native-gesture-handler": "~1.10.2",
-    "react-native-reanimated": "~2.1.0",
-    "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "~3.0.0",
-    "react-native-snap-carousel": "^3.9.1",
-    "react-native-web": "~0.13.12",
+    "react-native-gesture-handler": "~2.8.0",
+    "react-native-reanimated": "~2.12.0",
+    "react-native-safe-area-context": "4.4.1",
+    "react-native-screens": "~3.18.0",
+    "react-native-snap-carousel": "^4.0.0-beta.6",
+    "react-native-web": "~0.18.7",
     "react-navigation": "^4.4.4",
     "react-navigation-header-buttons": "^6.3.1",
     "react-navigation-stack": "^2.10.4",
@@ -35,7 +36,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.19.3"
   },
   "private": true
 }
