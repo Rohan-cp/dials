@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import SavedItem from '../components/SavedItem';
 import Colors from '../constants/Colors';
@@ -17,7 +17,34 @@ const SavedScreen = props => {
   const renderSavedItem = itemData => {
     return <SavedItem onSelect={navigateToArticle} item={itemData.item} />;
   };
+  
+  let savedArticleIds = []
+  
+  useEffect(() => {
+    const getMyObject = async () => {
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      
+      try {
+        const jsonValue = await AsyncStorage.getItem('@storage_key')
+        console.log("--------------------------->")
+        console.log("jsonValue", jsonValue)
+        return jsonValue != null ? JSON.parse(jsonValue) : null
+      } catch(e) {
+        // read error
+      }
+      await sleep(1000);
+      console.log('Done.')
+    }
+    
+    savedArticleIds = getMyObject()
+    console.log("savedArticleIds", savedArticleIds)
+  }, [])
+  
+  
 
+  
   return (
     <View style={styles.screen}>
       <FlatList 

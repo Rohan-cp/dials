@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Text,
@@ -16,11 +17,47 @@ import Colors from "../constants/Colors";
 
 const ArticleScreen = (props) => {
   const [isSelected, setIsSelected] = useState(false);
-
+  const articleId = props.navigation.getParam("id");
+  
   const onSaveHandler = () => {
-    setIsSelected((prevState) => !prevState);
+    setIsSelected((prevState) => {
+      const newState = !prevState
+      if (newState) {
+        storeData(articleId)
+      }
+      return newState
+    }
+    
+    );
   };
-
+  
+  const getMyObject = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('@storage_key')
+      console.log("--------------------------->")
+      console.log("jsonValue", jsonValue)
+      return jsonValue != null ? JSON.parse(jsonValue) : null
+    } catch(e) {
+      // read error
+    }
+  
+    console.log('Done.')
+  }
+  
+  const storeData = async (value) => {
+    try {
+      // console.log("storeData value", value)
+      const newItem = await getMyObject()
+      console.log("old item", newItem)
+      newItem.saved ? newItem.saved.push(value) : newItem.saved = [value]
+      const jsonValue = JSON.stringify(newItem)
+      console.log("newItem", newItem)
+      await AsyncStorage.setItem('@storage_key', jsonValue)
+    } catch (e) {
+      // saving error
+    }
+  }
+  
   useEffect(() => {
     props.navigation.setParams({
       toggleSave: onSaveHandler,
@@ -35,7 +72,7 @@ const ArticleScreen = (props) => {
 
   let article = "";
   
-  const articleId = props.navigation.getParam("id");
+  
   if (__DEV__) {
     article = dummyData.find((article) => article.id == articleId);
   } else {
