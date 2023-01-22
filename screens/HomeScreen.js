@@ -36,28 +36,6 @@ const HomeScreen = (props) => {
 HomeScreen.navigationOptions = (navigationData) => {
   return {
     headerTitle: "kno-logic",
-    headerRight: () => {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            navigationData.navigation.navigate("Calendar");
-          }}
-        >
-          <View style={styles.iconContainer}>
-            <AntDesign name="calendar" size={25} color="black" />
-            <Text
-              style={{
-                fontSize: 8,
-                textAlign: "center",
-                fontFamily: "Lato_700Bold",
-              }}
-            >
-              Today
-            </Text>
-          </View>
-        </TouchableOpacity>
-      );
-    },
   };
 };
 

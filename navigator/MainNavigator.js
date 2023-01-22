@@ -82,17 +82,6 @@ const ProfileNavigator = createStackNavigator({
 });
 
 const MainNavigator = createBottomTabNavigator({
-  Saved: {
-    screen: SavedNavigator,
-    navigationOptions: {
-      tabBarIcon: ({ focused }) => {
-        let iconName;
-        focused ? iconName = "ios-bookmark" : iconName = "ios-bookmark-outline"
-        return <Ionicons name={iconName} size={25} color={'black'}/>;
-      },
-      tabBarColor: '#E8EFF7',
-    },
-  },
   Daily: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -104,16 +93,17 @@ const MainNavigator = createBottomTabNavigator({
       tabBarColor: '#E8EFF7',
     },
   },
-  Profile: {
-    screen: ProfileNavigator,
+  Saved: {
+    screen: SavedNavigator,
     navigationOptions: {
       tabBarIcon: ({ focused }) => {
         let iconName;
-        focused ? iconName = "ios-person" : iconName = 'ios-person-outline'
+        focused ? iconName = "ios-bookmark" : iconName = "ios-bookmark-outline"
         return <Ionicons name={iconName} size={25} color={'black'}/>;
       },
+      tabBarColor: '#E8EFF7',
     },
-  }
+  },
 }, {
   tabBarOptions: {
     activeTintColor: 'black',
