@@ -57,8 +57,6 @@ const ArticleScreen = (props) => {
   const saveArticle = async (value) => {
     try {
       const newItems = await getMyArticlesData()
-      console.log("old items", newItems)
-      console.log("newItems.saved && !newItems.saved.includes(value)", newItems.saved && !newItems.saved.includes(value))
       if (newItems.saved && !newItems.saved.includes(value)) {
         newItems.saved.push(value)
       } else if (!newItems.saved) {
