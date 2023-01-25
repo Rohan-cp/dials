@@ -18,24 +18,34 @@ import Colors from "../constants/Colors";
 const ArticleScreen = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const articleId = props.navigation.getParam("id");
+  
+  useEffect(() => {
+    const fetchArticlesSaved = async () => {
+      const articlesSaved = await getMyArticlesData()
+      if (articlesSaved.saved) {
+        for(const article of articlesSaved.saved) {
+          if (article == articleId) {
+            setIsSelected(true)
+          }
+        }
+      }
+    }
+    fetchArticlesSaved()
+  }, [])
 
   const onSaveHandler = () => {
     setIsSelected((prevState) => {
       const newState = !prevState
       if (newState) {
-        storeData(articleId)
+        saveArticle(articleId)
       }
       return newState
-    }
-
-    );
+    });
   };
   
-  const getMyObject = async () => {
+  const getMyArticlesData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem('@storage_key')
-      console.log("--------------------------->")
-      console.log("jsonValue", jsonValue)
+      const jsonValue = await AsyncStorage.getItem('@articles_saved')
       return jsonValue != null ? JSON.parse(jsonValue) : null
     } catch(e) {
       // read error
@@ -44,17 +54,20 @@ const ArticleScreen = (props) => {
     console.log('Done.')
   }
 
-  const storeData = async (value) => {
+  const saveArticle = async (value) => {
     try {
-      // console.log("storeData value", value)
-      const newItem = await getMyObject()
-      console.log("old item", newItem)
-      newItem.saved ? newItem.saved.push(value) : newItem.saved = [value]
-      const jsonValue = JSON.stringify(newItem)
-      console.log("newItem", newItem)
-      await AsyncStorage.setItem('@storage_key', jsonValue)
+      const newItems = await getMyArticlesData()
+      console.log("old items", newItems)
+      console.log("newItems.saved && !newItems.saved.includes(value)", newItems.saved && !newItems.saved.includes(value))
+      if (newItems.saved && !newItems.saved.includes(value)) {
+        newItems.saved.push(value)
+      } else if (!newItems.saved) {
+        newItems.saved = [value]
+      }
+      const jsonValue = JSON.stringify(newItems)
+      await AsyncStorage.setItem('@articles_saved', jsonValue)
     } catch (e) {
-      // saving error
+      console.log("e", e)
     }
   }
 

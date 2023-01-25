@@ -27,7 +27,7 @@ const SavedScreen = props => {
       }
 
       try {
-        const jsonValue = await AsyncStorage.getItem('@storage_key')
+        const jsonValue = await AsyncStorage.getItem('@articles_saved')
         console.log("--------------------------->")
         console.log("jsonValue", jsonValue)
         return jsonValue != null ? JSON.parse(jsonValue) : null
