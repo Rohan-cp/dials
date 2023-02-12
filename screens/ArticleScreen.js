@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   Text,
@@ -12,66 +12,77 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import dummyData from "../data/dummy-data";
+import data from "../data/dummy-data";
 import Colors from "../constants/Colors";
 
 const ArticleScreen = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const articleId = props.navigation.getParam("id");
-  
-  useEffect(() => {
-    const fetchArticlesSaved = async () => {
-      const articlesSaved = await getMyArticlesData()
-      if (articlesSaved.saved) {
-        for(const article of articlesSaved.saved) {
-          if (article == articleId) {
-            setIsSelected(true)
-          }
-        }
-      }
-    }
-    fetchArticlesSaved()
-  }, [])
 
-  const onSaveHandler = () => {
+  const onToggleSaveHandler = () => {
     setIsSelected((prevState) => {
-      const newState = !prevState
-      if (newState) {
-        saveArticle(articleId)
+      if (!prevState == true) {
+        saveArticle(articleId);
+      } else {
+        removeSaveArticle(articleId);
       }
-      return newState
+      return !prevState;
     });
   };
-  
-  const getMyArticlesData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('@articles_saved')
-      return jsonValue != null ? JSON.parse(jsonValue) : null
-    } catch(e) {
-      // read error
-    }
 
-    console.log('Done.')
-  }
+  useEffect(() => {
+    fetchSavedArticleIds();
+  }, [fetchSavedArticleIds]);
 
-  const saveArticle = async (value) => {
+  const saveArticle = async (newArticleId) => {
     try {
-      const newItems = await getMyArticlesData()
-      if (newItems.saved && !newItems.saved.includes(value)) {
-        newItems.saved.push(value)
-      } else if (!newItems.saved) {
-        newItems.saved = [value]
+      let savedArticleIds = await getMyArticlesData();
+      if (savedArticleIds && savedArticleIds.length == 0) {
+        savedArticleIds = [newArticleId];
+      } else if (savedArticleIds && !savedArticleIds.includes(newArticleId)) {
+        savedArticleIds.push(newArticleId);
       }
-      const jsonValue = JSON.stringify(newItems)
-      await AsyncStorage.setItem('@articles_saved', jsonValue)
+      const jsonValue = JSON.stringify(savedArticleIds);
+      await AsyncStorage.setItem("@articles_saved", jsonValue);
+      fetchSavedArticleIds()
     } catch (e) {
-      console.log("e", e)
+      console.log("e", e);
     }
-  }
+  };
+
+  const removeSaveArticle = async (newArticleId) => {
+    try {
+      let savedArticleIds = await fetchSavedArticleIds();
+      if (savedArticleIds && savedArticleIds.includes(newArticleId)) {
+        savedArticleIds = savedArticleIds.filter((id) => id !== newArticleId);
+      }
+      const jsonValue = JSON.stringify(savedArticleIds);
+      await AsyncStorage.setItem("@articles_saved", jsonValue);
+      fetchSavedArticleIds()
+    } catch (e) {
+      console.log("e", e);
+    }
+  };
+
+  const fetchSavedArticleIds = async () => {
+    const savedArticleIds = await getMyArticlesData();
+    setIsSelected(savedArticleIds.includes(articleId));
+    return savedArticleIds;
+  };
+
+  const getMyArticlesData = useCallback(async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("@articles_saved");
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+      console.log("error", error);
+    }
+    console.log("Done.");
+  }, []);
 
   useEffect(() => {
     props.navigation.setParams({
-      toggleSave: onSaveHandler,
+      toggleSave: onToggleSaveHandler,
     });
   }, []);
 
@@ -82,9 +93,9 @@ const ArticleScreen = (props) => {
   }, [isSelected]);
 
   let article = "";
-  
+
   if (__DEV__) {
-    article = dummyData.find((article) => article.id == articleId);
+    article = data.find((article) => article.id == articleId);
   } else {
     article = useSelector((state) => {
       return state.articles.articles.find((article) => article.id == articleId);
@@ -116,8 +127,7 @@ const ArticleScreen = (props) => {
 ArticleScreen.navigationOptions = (navigationData) => {
   const isSelected = navigationData.navigation.getParam("isArticleSelected");
   const toggleSave = navigationData.navigation.getParam("toggleSave");
-  let iconName;
-  isSelected
+  let iconName = isSelected
     ? (iconName = "ios-bookmark")
     : (iconName = "ios-bookmark-outline");
   return {
