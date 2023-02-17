@@ -67,7 +67,6 @@ const ArticleScreen = (props) => {
 
   const fetchSavedArticleIds = async () => {
     let savedArticleIds = await getMyArticlesData();
-    console.log("final savedArticleIds", savedArticleIds);
     if (!savedArticleIds) {
       savedArticleIds = [];
     }

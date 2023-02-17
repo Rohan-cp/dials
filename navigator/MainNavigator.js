@@ -25,7 +25,7 @@ function HomeStack() {
         options={{ headerTitle: "kno-logic" }}
       />
       <Stack.Screen
-        name="Article"
+        name="ArticleScreen"
         component={ArticleScreen}
         options={{ headerTitle: "Article" }}
       />
@@ -42,12 +42,12 @@ function SavedStack() {
   return (
     <Stack.Navigator initialRouteName="Saved">
       <Stack.Screen
-        name="Saved"
+        name="SavedScreen"
         component={SavedScreen}
         options={{ headerTitle: "Saved Articles" }}
       />
       <Stack.Screen
-        name="Article"
+        name="ArticleScreen"
         component={ArticleScreen}
         options={{ headerTitle: "Article" }}
       />
@@ -87,10 +87,11 @@ function RootStack() {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "black",
+        headerShown: false,
       }}
     >
       <Tab.Screen
-        name="HomeScreen"
+        name="Daily"
         component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -103,11 +104,10 @@ function RootStack() {
             );
           },
           tabBarColor: "#E8EFF7",
-          headerShown: false,
         }}
       />
       <Tab.Screen
-        name="SavedScren"
+        name="Saved"
         component={SavedStack}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -118,7 +118,6 @@ function RootStack() {
             return <Ionicons name={iconName} size={25} color={"black"} />;
           },
           tabBarColor: "#E8EFF7",
-          headerShown: false,
         }}
       />
     </Tab.Navigator>

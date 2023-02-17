@@ -11,7 +11,7 @@ const SavedScreen = (props) => {
   const DATA = data;
 
   const navigateToArticle = (itemId) => {
-    return props.navigation.navigate("Article", {
+    return props.navigation.navigate("ArticleScreen", {
       id: itemId,
     });
   };
@@ -25,7 +25,6 @@ const SavedScreen = (props) => {
     if (!savedArticleIds) {
       savedArticleIds = [];
     }
-    console.log("here------->");
     setArticleData((c) =>
       c.filter((article) => savedArticleIds.includes(article.id))
     );

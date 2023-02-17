@@ -9,7 +9,7 @@ const CarouselCards = (props) => {
   const isCarousel = React.useRef(null);
 
   const navigateToArticle = (itemId) => {
-    return props.navigation.navigate('Article', {
+    return props.navigation.navigate('ArticleScreen', {
       id: itemId
     });
   };
