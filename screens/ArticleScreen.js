@@ -17,7 +17,7 @@ import Colors from "../constants/Colors";
 
 const ArticleScreen = (props) => {
   const [isSelected, setIsSelected] = useState(false);
-  const articleId = props.navigation.getParam("id");
+  const articleId = props.route.params?.id ?? "";
 
   const onToggleSaveHandler = () => {
     setIsSelected((prevState) => {
@@ -37,14 +37,15 @@ const ArticleScreen = (props) => {
   const saveArticle = async (newArticleId) => {
     try {
       let savedArticleIds = await getMyArticlesData();
-      if (savedArticleIds && savedArticleIds.length == 0) {
+      if (!savedArticleIds || savedArticleIds.length == 0) {
+        console.log("2");
         savedArticleIds = [newArticleId];
       } else if (savedArticleIds && !savedArticleIds.includes(newArticleId)) {
         savedArticleIds.push(newArticleId);
       }
       const jsonValue = JSON.stringify(savedArticleIds);
       await AsyncStorage.setItem("@articles_saved", jsonValue);
-      fetchSavedArticleIds()
+      fetchSavedArticleIds();
     } catch (e) {
       console.log("e", e);
     }
@@ -58,14 +59,18 @@ const ArticleScreen = (props) => {
       }
       const jsonValue = JSON.stringify(savedArticleIds);
       await AsyncStorage.setItem("@articles_saved", jsonValue);
-      fetchSavedArticleIds()
+      fetchSavedArticleIds();
     } catch (e) {
       console.log("e", e);
     }
   };
 
   const fetchSavedArticleIds = async () => {
-    const savedArticleIds = await getMyArticlesData();
+    let savedArticleIds = await getMyArticlesData();
+    console.log("final savedArticleIds", savedArticleIds);
+    if (!savedArticleIds) {
+      savedArticleIds = [];
+    }
     setIsSelected(savedArticleIds.includes(articleId));
     return savedArticleIds;
   };
@@ -81,16 +86,19 @@ const ArticleScreen = (props) => {
   }, []);
 
   useEffect(() => {
-    props.navigation.setParams({
-      toggleSave: onToggleSaveHandler,
+    let iconName = isSelected
+      ? (iconName = "ios-bookmark")
+      : (iconName = "ios-bookmark-outline");
+    props.navigation.setOptions({
+      headerRight: () => (
+        <View style={styles.iconContainer}>
+          <TouchableOpacity onPress={onToggleSaveHandler}>
+            <Ionicons name={iconName} size={25} color={"black"} />
+          </TouchableOpacity>
+        </View>
+      ),
     });
-  }, []);
-
-  useEffect(() => {
-    props.navigation.setParams({
-      isArticleSelected: isSelected,
-    });
-  }, [isSelected]);
+  }, [props.navigation, isSelected]);
 
   let article = "";
 
@@ -125,20 +133,9 @@ const ArticleScreen = (props) => {
 };
 
 ArticleScreen.navigationOptions = (navigationData) => {
-  const isSelected = navigationData.navigation.getParam("isArticleSelected");
-  const toggleSave = navigationData.navigation.getParam("toggleSave");
-  let iconName = isSelected
-    ? (iconName = "ios-bookmark")
-    : (iconName = "ios-bookmark-outline");
   return {
     headerRight: () => {
-      return (
-        <View style={styles.iconContainer}>
-          <TouchableOpacity onPress={toggleSave}>
-            <Ionicons name={iconName} size={25} color={"black"} />
-          </TouchableOpacity>
-        </View>
-      );
+      return null;
     },
   };
 };

@@ -25,7 +25,7 @@ function HomeStack() {
         options={{ headerTitle: "kno-logic" }}
       />
       <Stack.Screen
-        name="Article Screen"
+        name="Article"
         component={ArticleScreen}
         options={{ headerTitle: "Article" }}
       />
@@ -47,7 +47,7 @@ function SavedStack() {
         options={{ headerTitle: "Saved Articles" }}
       />
       <Stack.Screen
-        name="Article Screen"
+        name="Article"
         component={ArticleScreen}
         options={{ headerTitle: "Article" }}
       />
@@ -90,7 +90,7 @@ function RootStack() {
       }}
     >
       <Tab.Screen
-        name="HomeStack"
+        name="HomeScreen"
         component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -107,7 +107,7 @@ function RootStack() {
         }}
       />
       <Tab.Screen
-        name="SavedStack"
+        name="SavedScren"
         component={SavedStack}
         options={{
           tabBarIcon: ({ focused }) => {

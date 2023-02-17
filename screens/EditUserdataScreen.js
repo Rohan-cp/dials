@@ -10,11 +10,12 @@ import { useDispatch } from "react-redux";
 import { updateUsername } from "../store/actions/updateUserdata";
 
 const EditUserdataScreen = (props) => {
-  const [val, setVal] = useState(props.navigation.getParam("initialVal"));
+  const [val, setVal] = useState(props.route.params?.initialVal);
+
   const [err, setErrText] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isBlur, setIsBlur] = useState(false);
-  const title = props.navigation.getParam("title");
+  const title = props.navigation.title;
 
   const inputChangeHandler = (newVal) => {
     setVal(newVal);
@@ -68,18 +69,18 @@ const EditUserdataScreen = (props) => {
 
 EditUserdataScreen.navigationOptions = (navigationData) => {
   return {
-    headerTitle: navigationData.navigation.getParam("title"),
+    headerTitle: navigationData.route.params?.title,
     headerRight: () => {
       return (
         <View style={{ paddingRight: 7 }}>
           <TouchableOpacity
             onPress={() => {
               console.log("hi");
-              navigationData.navigation.getParam("onDone")();
+              navigationData.route.params?.onDone();
               console.log("9999");
               navigationData.navigation.goBack();
             }}
-            disabled={navigationData.navigation.getParam("valid")}
+            disabled={navigationData.route.params?.valid}
           >
             <Text style={styles.submitButtonText}> Save </Text>
           </TouchableOpacity>

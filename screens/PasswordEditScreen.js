@@ -46,9 +46,9 @@ PasswordEditScreen.navigationOptions = (navigationData) => {
       <Button
         onPress={() => {
           const data = {
-            currentPwd: navigationData.navigation.getParam("currentPwd"),
-            newPwd: navigationData.navigation.getParam("newPwd"),
-            copyNewPwd: navigationData.navigation.getParam("copyNewPwd"),
+            currentPwd: navigationData.route.params?.currentPwd,
+            newPwd: navigationData.route.params?.currentPwdnewPwd,
+            copyNewPwd: navigationData.route.params?.currentPwdcopyNewPwd,
           };
         }}
         title="Done"
