@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from "react";
 import MainNavigator from "./navigator/MainNavigator";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import AppLoading from "expo-app-loading";
 import { enableScreens } from "react-native-screens";
 import ReduxThunk from "redux-thunk";
 import { StatusBar } from "expo-status-bar";
@@ -51,29 +50,13 @@ export default function App() {
   });
 
   useEffect(() => {
-    async function prepare() {
-      try {
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        // Tell the application to render
-
-        if (fontsLoaded) {
-          setAppIsReady(true);
-        }
-      }
+    if (fontsLoaded) {
+      setAppIsReady(true);
     }
-
-    prepare();
   }, [fontsLoaded]);
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
       await SplashScreen.hideAsync();
     }
   }, [appIsReady]);
