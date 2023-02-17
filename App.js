@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useEffect } from "react";
-import MainNavigator from "./navigator/MainNavigator";
+import RootStack from "./navigator/MainNavigator";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { enableScreens } from "react-native-screens";
 import ReduxThunk from "redux-thunk";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
 
 import {
   Lato_100Thin,
@@ -75,7 +76,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <StatusBar style="dark" />
-      <MainNavigator onLayout={onLayoutRootView} />
+      <NavigationContainer onLayoutRoot={onLayoutRootView}>
+        <RootStack />
+      </NavigationContainer>
     </Provider>
   );
 }

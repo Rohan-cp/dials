@@ -21,7 +21,10 @@ const SavedScreen = (props) => {
   };
 
   const fetchSavedArticles = useCallback(async () => {
-    const savedArticleIds = await getMyArticlesData();
+    let savedArticleIds = await getMyArticlesData();
+    if (!savedArticleIds) {
+      savedArticleIds = [];
+    }
     console.log("here------->");
     setArticleData((c) =>
       c.filter((article) => savedArticleIds.includes(article.id))
