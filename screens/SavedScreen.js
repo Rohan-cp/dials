@@ -1,10 +1,10 @@
-import React, { useCallback, useFocusEffect, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import SavedItem from "../components/SavedItem";
 import Colors from "../constants/Colors";
 import data from "../data/dummy-data";
-import { useDispatch, useSelector } from "react-redux";
 
 const SavedScreen = (props) => {
   const [articleData, setArticleData] = useState(data);
@@ -30,9 +30,11 @@ const SavedScreen = (props) => {
     );
   }, []);
 
-  useEffect(() => {
-    fetchSavedArticles().catch((e) => console.log(e));
-  }, [fetchSavedArticles]);
+  useFocusEffect(
+    useCallback(() => {
+      fetchSavedArticles();
+    }, [])
+  );
 
   const getMyArticlesData = useCallback(async () => {
     try {
