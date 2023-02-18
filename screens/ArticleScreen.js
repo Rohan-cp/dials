@@ -36,7 +36,7 @@ const ArticleScreen = (props) => {
 
   const saveArticle = async (newArticleId) => {
     try {
-      let savedArticleIds = await getMyArticlesData();
+      let savedArticleIds = await getSavedArticleIds();
       if (!savedArticleIds || savedArticleIds.length == 0) {
         console.log("2");
         savedArticleIds = [newArticleId];
@@ -66,7 +66,7 @@ const ArticleScreen = (props) => {
   };
 
   const fetchSavedArticleIds = async () => {
-    let savedArticleIds = await getMyArticlesData();
+    let savedArticleIds = await getSavedArticleIds();
     if (!savedArticleIds) {
       savedArticleIds = [];
     }
@@ -74,7 +74,7 @@ const ArticleScreen = (props) => {
     return savedArticleIds;
   };
 
-  const getMyArticlesData = useCallback(async () => {
+  const getSavedArticleIds = useCallback(async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("@articles_saved");
       return jsonValue != null ? JSON.parse(jsonValue) : null;

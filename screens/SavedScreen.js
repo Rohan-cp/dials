@@ -21,25 +21,25 @@ const SavedScreen = (props) => {
   };
 
   const fetchSavedArticles = useCallback(async () => {
-    let savedArticleIds = await getMyArticlesData();
+    let savedArticleIds = await getSavedArticleIds();
     if (!savedArticleIds) {
       savedArticleIds = [];
     }
-    setArticleData((c) =>
-      c.filter((article) => savedArticleIds.includes(article.id))
+    setArticleData(
+      DATA.filter((article) => savedArticleIds.includes(article.id))
     );
   }, []);
 
   useFocusEffect(
     useCallback(() => {
       fetchSavedArticles();
-    }, [])
+    }, [fetchSavedArticles])
   );
 
-  const getMyArticlesData = useCallback(async () => {
+  const getSavedArticleIds = useCallback(async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("@articles_saved");
-      console.log("jsonValue", jsonValue);
+      // console.log("jsonValue", jsonValue);
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       console.log("error", error);
