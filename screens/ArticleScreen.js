@@ -92,7 +92,7 @@ const ArticleScreen = (props) => {
       headerRight: () => (
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={onToggleSaveHandler}>
-            <Ionicons name={iconName} size={25} color={"black"} />
+            <Ionicons name={iconName} size={27} color={"black"} />
           </TouchableOpacity>
         </View>
       ),
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: "5%",
     paddingTop: 10,
     fontWeight: "400",
-    fontSize: 17.6,
+    fontSize: 16.7,
     lineHeight: 30,
   },
   titleContainer: {
